@@ -38,10 +38,10 @@ class Nav extends React.Component {
         </>
       )
     }
-
+    
     return (
       <nav>
-        // TODO: add materialize-ui drawer to left side for better mobile access.
+        <p>TODO: add materialize-ui drawer to left side for better mobile access.</p>
         <ul>
           <li>
             <Link to='/'>Home</Link>
