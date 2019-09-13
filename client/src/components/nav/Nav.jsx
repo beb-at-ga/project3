@@ -6,8 +6,6 @@ class Nav extends React.Component {
     e.preventDefault();
     //remove jwt from local storage or cookies
     localStorage.removeItem('authToken');
-
-
     //update the state of the app
     this.props.updateUser()
 
@@ -43,6 +41,7 @@ class Nav extends React.Component {
 
     return (
       <nav>
+        // TODO: add materialize-ui drawer to left side for better mobile access.
         <ul>
           <li>
             <Link to='/'>Home</Link>
