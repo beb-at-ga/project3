@@ -8,7 +8,8 @@ const Profile = (props) => {
 
   return (
     <div>
-      Hello, {props.user.firstname}!
+      <p>Hello, {props.user.firstname}!</p>
+      <p>I'm the profile page.</p>
     </div>
   )
 }
