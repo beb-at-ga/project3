@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import ProfileHeader from '../profile/ProfileHeader';
 
 const Profile = (props) => {
   if (!props.user) {
@@ -8,8 +9,8 @@ const Profile = (props) => {
 
   return (
     <div>
-      <p>Hello, {props.user.firstname}!</p>
-      <p>I'm the profile page.</p>
+      <ProfileHeader user={props.user}/>
+      <p>Future Profile Details Component</p>
     </div>
   )
 }

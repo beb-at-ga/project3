@@ -2,6 +2,9 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 
 import Header from "./components/nav/Header";
 import Nav from "./components/nav/Nav";
@@ -47,11 +50,14 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="App">
-          <Header />
-          <Nav user={this.state.user} updateUser={this.getUser} />
-          <Routes user={this.state.user} updateUser={this.getUser} />
-        </div>
+        <React.Fragment>
+          <CssBaseline />
+          <Container >
+              <Header />
+              <Nav user={this.state.user} updateUser={this.getUser} />
+              <Routes user={this.state.user} updateUser={this.getUser} />
+          </Container>
+        </React.Fragment>
       </Router>
     );
   }

@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 
 // Custome components
 import Home from '../components/pages/Home';
-import Profile from '../components/pages/Profile';
+import Profile from '../components/pages/profile/Profile';
 import Login from '../components/pages/Login';
 import Signup from '../components/pages/Signup';
 
