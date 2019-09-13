@@ -15,6 +15,10 @@ router.post('/', (req, res) => {
 router.put(':id', (req, res) => {
     db.Tag.findOneandUpdate({
         _id: req.params.id
+    },
+    req.body,
+    {
+        new: true
     })
     .then(editedTag => {
         res.send(editedTag)
@@ -24,3 +28,6 @@ router.put(':id', (req, res) => {
         res.status(503).send({ message: 'Server Error'})
     })
 })
+
+
+module.exports = router
