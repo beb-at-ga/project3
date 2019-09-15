@@ -10,7 +10,6 @@ import Header from "./components/nav/Header";
 import Routes from "./components/Routes";
 import Footer from './components/footer/Footer';
 
-
 // Material UI Styling Components
 import CssBaseline from '@material-ui/core/CssBaseline';
 // import Typography from '@material-ui/core/Typography';
@@ -30,7 +29,6 @@ const useStyles = makeStyles(theme => ({
 const App = () => {
 
   const [user, setUser] = useState({})
-
   const classes = useStyles();
 
   useEffect( () => {
@@ -55,7 +53,7 @@ const App = () => {
           // console.log(user);
         })
         .catch(err => {
-          // console.log(err);
+          console.log(err);
         });
     } else {
       setUser({ user: null });
@@ -67,13 +65,10 @@ const App = () => {
       <React.Fragment>
         <CssBaseline />
         <div className={classes.root}>
-          {/* <Container > */}
           <Header user={user} updateUser={getUser} />
-          {/* <Nav /> */}
           <main>
             <Routes user={user} updateUser={getUser} />
           </main>
-          {/* </Container> */}
           <Footer />
         </div>
       </React.Fragment>

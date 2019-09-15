@@ -6,6 +6,7 @@ import Home from '../components/pages/Home';
 import Profile from '../components/pages/profile/Profile';
 import Login from '../components/pages/Login';
 import Signup from '../components/pages/Signup';
+import Logout from '../components/pages/Logout';
 
 const Routes = (props) => {
   return (
@@ -18,8 +19,11 @@ const Routes = (props) => {
         () => <Login user={props.user} updateUser={props.updateUser} />
       } />
       <Route path='/signup' render={
-        () => <Signup updateUser={props.updateUser} user={props.user} />
+        () => <Signup user={props.user} updateUser={props.updateUser} />
       } />
+      <Route path='/logout' render={
+        () => <Logout user={props.user} updateUser={props.updateUser} />
+      } /> 
     </div>
   )
 }

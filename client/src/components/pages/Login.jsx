@@ -1,51 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import BASE_URL from '../../constants';
 import { Redirect } from 'react-router-dom';
 
-class Login extends React.Component {
-  state = {
-    email: '',
-    password: '',
-    message: ''
-  }
+const Login = (props) => {
 
-  handleSubmit = (e) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Submit', this.state)
+    // console.log(`Submit: ${email}, ${password}, ${message}`)
 
-    axios.post(`${BASE_URL}/auth/login`, this.state)
-    .then(response => {
-      console.log(response.data);
-
-      localStorage.setItem('authToken', response.data.token)
-
-      this.props.updateUser();
-
-    })
-    .catch(err => {
-      this.setState({
-        message: `${err.response.status}: ${err.response.data.message}`
-      })
-    })
-
-  }
-
-  render() {
-    if (this.props.user) {
-      return <Redirect to='/profile' />
+    let postBody = {
+      email: email,
+      password: password
     }
 
+    axios.post(`${BASE_URL}/auth/login`, postBody)
+      .then(response => {
+        // console.log(response.data);
+
+        localStorage.setItem('authToken', response.data.token)
+
+        props.updateUser();
+
+      })
+      .catch(err => {
+        setMessage(`${err.response.status}: ${err.response.data.message}`)
+      })
+  }
+
+  if (props.user._id) {
+    return <Redirect to='/profile' />
+  } else {
     return (
       <div>
         <h2>Login</h2>
-        <span className='red'>{this.state.message}</span>
-        <form onSubmit={this.handleSubmit}>
+        <span className='red'>{message}</span>
+        <form onSubmit={handleSubmit}>
           <div>
             <label>Email: </label>
-            <input name='email' type='email' placeholder='Your email address...' onChange={(e) => this.setState({ email: e.target.value, message: '' })} />
+            <input name='email' type='email' placeholder='Your email address...' onChange={(e) => setEmail(e.target.value)} />
             <label>Password: </label>
-            <input name='password' type='password' placeholder='Your email address...' onChange={(e) => this.setState({ password: e.target.value, message: '' })} />
+            <input name='password' type='password' placeholder='Your email address...' onChange={(e) => setPassword(e.target.value)} />
           </div>
           <button type="submit">Login</button>
 

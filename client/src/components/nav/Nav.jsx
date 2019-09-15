@@ -14,6 +14,7 @@ import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import PropTypes from 'prop-types';
 import DraftsIcon from '@material-ui/icons/Drafts';
 
+
 // const drawerWidth = 240;
 
 const useStyles = makeStyles({
@@ -53,7 +54,7 @@ ListItemLink.propTypes = {
   to: PropTypes.string.isRequired,
 };
 
-const TopNav = (props) => {
+const Nav = (props) => {
   const classes = useStyles();
   const [state, setState] = React.useState({
     left: false,
@@ -68,14 +69,15 @@ const TopNav = (props) => {
 
   const sideList = side => (
     <div className={classes.list} role="presentation" onClick={toggleDrawer(side, false)} onKeyDown={toggleDrawer(side, false)} >
-      <List component="nav" aria-label="home projects blog about">
+      <List component="nav" aria-label="home login logout about">
         <ListItemLink to="/" primary="Home" icon={<InboxIcon />} />
-        <ListItemLink to="/projects" primary="Projects" icon={<DraftsIcon />} />
-        <ListItemLink to="/blog" primary="Blog" icon={<DraftsIcon />} />
+        <ListItemLink to="/login" primary="Login" icon={<DraftsIcon />} />
       </List>
+
       <Divider />
       <List component="nav" aria-label="home projects blog about">
         <ListItemLink to="/about" primary="About" icon={<DraftsIcon />} />
+        <ListItemLink to="/logout" primary="Logout" icon={<DraftsIcon />} />
       </List>
     </div>
   );
@@ -92,4 +94,4 @@ const TopNav = (props) => {
   );
 }
 
-export default TopNav;
+export default Nav;

@@ -6,7 +6,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -25,18 +24,18 @@ const Header = (props) => {
 
   let headerString = '';
   
-  if (props.user) {
+  if (props.user.firstname) {
     headerString = `Hi, ${props.user.firstname}!`;
   } else {
-    console.log(props.user);
-    headerString = 'Hi!'
+    // console.log(props.user);
+    headerString = 'Hello.'
   }
 
   return (
     <div>
       <AppBar position="static">
         <Toolbar >
-          <Nav />
+          <Nav user={props.user} updateUser={props.updateUser} />
             <Typography variant="h6" className={classes.title}>
               {headerString}             
           </Typography>
