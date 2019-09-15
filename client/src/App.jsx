@@ -1,26 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-
-import Header from "./components/nav/Header";
-import Nav from "./components/nav/Nav";
-import Routes from "./components/Routes";
 import BASE_URL from "./constants";
 
-class App extends React.Component {
-  state = {
-    user: null
-  };
+// Custom Components
+import Header from "./components/nav/Header";
+// import Nav from "./components/nav/Nav";
+import Routes from "./components/Routes";
+import Footer from './components/footer/Footer';
 
-  componentDidMount() {
-    this.getUser();
-  }
 
-  getUser = () => {
+// Material UI Styling Components
+import CssBaseline from '@material-ui/core/CssBaseline';
+// import Typography from '@material-ui/core/Typography';
+// import Container from '@material-ui/core/Container';
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh'
+  },
+}));
+
+
+// class App extends React.Component {
+const App = () => {
+
+  const [user, setUser] = useState({})
+
+  const classes = useStyles();
+
+  useEffect( () => {
+    getUser();
+  }, []);
+
+  const getUser = () => {
     // see if there is a token in localStorage
     let token = localStorage.getItem("authToken");
 
@@ -33,34 +50,42 @@ class App extends React.Component {
           }
         })
         .then(response => {
-          console.log(response.data);
-          this.setState({
-            user: response.data.user
-          });
-          console.log(this.state);
+          // console.log(response.data);
+          setUser(response.data.user);
+          // console.log(user);
         })
         .catch(err => {
-          console.log(err);
+          // console.log(err);
         });
     } else {
-      this.setState({ user: null });
+      setUser({ user: null });
     }
   };
 
-  render() {
-    return (
-      <Router>
-        <React.Fragment>
-          <CssBaseline />
-          <Container >
-              <Header />
-              <Nav user={this.state.user} updateUser={this.getUser} />
-              <Routes user={this.state.user} updateUser={this.getUser} />
-          </Container>
-        </React.Fragment>
-      </Router>
-    );
-  }
+  return (
+    <Router>
+      <React.Fragment>
+        <CssBaseline />
+        <div className={classes.root}>
+          {/* <Container > */}
+          <Header user={user} updateUser={getUser} />
+          {/* <Nav /> */}
+          <main>
+            <Routes user={user} updateUser={getUser} />
+          </main>
+          {/* </Container> */}
+          <Footer />
+        </div>
+      </React.Fragment>
+    </Router>
+  );
 }
 
 export default App;
+
+
+
+
+
+
+

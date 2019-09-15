@@ -1,24 +1,24 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
+// import Paper from '@material-ui/core/Paper';
+// import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-}));
+// const useStyles = makeStyles(theme => ({
+//   root: {
+//     flexGrow: 1,
+//   },
+//   paper: {
+//     padding: theme.spacing(2),
+//     textAlign: 'center',
+//     color: theme.palette.text.secondary,
+//   },
+// }));
 
 
 const ProfileHeader = (props) => {
 
-  const classes = useStyles();
+  // const classes = useStyles();
 
   return (
     <Box >
