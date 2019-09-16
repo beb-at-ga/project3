@@ -22,7 +22,8 @@ const useStyles = makeStyles(theme => ({
   footer: {
     padding: theme.spacing(2),
     marginTop: 'auto',
-    backgroundColor: 'white',
+    backgroundColor: 'lightgray',
+    zIndex: theme.zIndex.drawer + 1,
   },
 }));
 
@@ -30,9 +31,9 @@ const Footer = () => {
   const classes = useStyles();
 
   return (
-    <footer className={classes.footer}>
+    <footer position="fixed" className={classes.footer}>
       <Box textAlign="center" maxWidth="sm">
-      I'm a sad, empty footer. I need links to good content!
+        I'm a sad, empty footer. I need links to good content!
       </Box>
       <Box textAlign="center" maxWidth="sm">
         <Typography variant="body1"></Typography>

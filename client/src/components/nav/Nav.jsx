@@ -15,7 +15,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
@@ -80,7 +79,6 @@ const Nav = (props) => {
   function handleDrawerToggle() {
     setMobileOpen(!mobileOpen)
   }
-
 
   const pages = [ 'Home', 'Login', 'Signup', 'Logout', 'About']
 
