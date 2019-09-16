@@ -66,7 +66,6 @@ const ListItemLink = (props) => {
   const renderLink = useMemo(
     () =>
       forwardRef((itemProps, ref) => (
-        // with react-router-dom@^5.0.0 use `ref` instead of `innerRef`
         <Link to={to} {...itemProps} innerRef={ref} />
       )),
     [to],
@@ -104,27 +103,42 @@ const Nav = (props) => {
     }
   }
 
-  const drawer = (
-    <div className={classes.list} role="presentation" >
-      <List component="nav" aria-label="TODO">
-        <ListItemLink to="/" primary="Home" icon={<InboxIcon />} clickAction={handleDrawerToggle} />
-        <ListItemLink to="/signup" primary="Signup" icon={<DraftsIcon />} clickAction={handleDrawerToggle} />
-        <ListItemLink to="/login" primary="Login" icon={<DraftsIcon />} clickAction={handleDrawerToggle} />
-      </List>
+  let drawer;
 
-      <Divider />
-      <List component="nav" aria-label="TODO">
-        <ListItemLink to="/about" primary="About" icon={<DraftsIcon />} clickAction={handleDrawerToggle} />
-        <ListItemLink to="/logout" primary="Logout" icon={<DraftsIcon />} clickAction={handleDrawerToggle} />
-      </List>
-    </div>
-  );
+  if (props.user._id) {
+    drawer = (
+      <div className={classes.list} role="presentation" >
+        <List component="nav" aria-label="TODO">
+          <ListItemLink to="/" primary="Home" icon={<InboxIcon />} clickAction={handleDrawerToggle} />
+          <ListItemLink to="/profile" primary="My Profile" icon={<InboxIcon />} clickAction={handleDrawerToggle} />
+        </List>
+        <Divider />
+        <List component="nav" aria-label="TODO">
+          <ListItemLink to="/logout" primary="Logout" icon={<DraftsIcon />} clickAction={handleDrawerToggle} />
+          <ListItemLink to="/about" primary="About" icon={<DraftsIcon />} clickAction={handleDrawerToggle} />
+        </List>
+      </div>
+    );
+  } else {
+    drawer = (
+      <div className={classes.list} role="presentation" >
+        <List component="nav" aria-label="TODO">
+          <ListItemLink to="/" primary="Home" icon={<InboxIcon />} clickAction={handleDrawerToggle} />
+          <ListItemLink to="/signup" primary="Signup" icon={<DraftsIcon />} clickAction={handleDrawerToggle} />
+          <ListItemLink to="/login" primary="Login" icon={<DraftsIcon />} clickAction={handleDrawerToggle} />
+        </List>
+        <Divider />
+        <List component="nav" aria-label="TODO">
+          <ListItemLink to="/about" primary="About" icon={<DraftsIcon />} clickAction={handleDrawerToggle} />
+        </List>
+      </div>
+    );
+  }
 
   let headerString = '';
   if (props.user.firstname) {
     headerString = `Hi, ${props.user.firstname}!`;
   } else {
-    // console.log(props.user);
     headerString = 'Hello.'
   }
 

@@ -23,7 +23,9 @@ const Routes = (props) => {
     // <div className='container'>
     <div className={classes.container}>
       
-      <Route exact path='/' component={Home} />
+      <Route exact path='/' render={
+        () => <Home user={props.user} />
+      } />
       <Route path='/profile' render={
         () => <Profile user={props.user} updateUser={props.updateUser} />
       } />
