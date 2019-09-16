@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import ProfileHeader from '../profile/ProfileHeader';
+import ProfileHeader from './ProfileHeader';
+import ProfileDetails from './ProfileDetails'
 
 
 const Profile = (props) => {
@@ -14,6 +15,7 @@ const Profile = (props) => {
     <div>
       <ProfileHeader user={props.user}/>
       <p>Future Profile Details Component</p>
+      <ProfileDetails user={props.user}/>
     </div>
   )
 }
