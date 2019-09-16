@@ -1,6 +1,6 @@
 // create router adn reference to models
 let router = require('express').Router()
-let db = require('../../models')
+let db = require('../models');
 
 // GET /profiles/:id
 router.get('/:id', (req, res) => {
@@ -40,7 +40,7 @@ router.put('/:id', (req, res) => {
 
 // DELETE /profiles/:id
 router.delete('/:id', (req, res) => {
-    db.User.findByAnIdAndDelete(re.params.id)
+    db.User.findByIdAndDelete(req.params.id)
     .then(() => {
         res.status(204).send()
     })

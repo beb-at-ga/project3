@@ -2,14 +2,13 @@
 let router = require('express').Router()
 let db = require('../../models')
 
-
 //POST to /tags
 router.post('/', (req, res) => {
     db.Tag.create(req.body)
     .then(tag => {
         res.status(201).send(tag)
     })
-})
+});
 
 //PUT to /tags/:id
 router.put(':id', (req, res) => {
@@ -27,7 +26,6 @@ router.put(':id', (req, res) => {
         console.log(err)
         res.status(503).send({ message: 'Server Error'})
     })
-})
+});
 
-
-module.exports = router
+module.exports = router;
