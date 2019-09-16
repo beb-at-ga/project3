@@ -29,8 +29,8 @@ let userSchema = new mongoose.Schema({
     urgency: Boolean,
     bio: String,
     zipcode: Number,
-    menteeTag: {},
-    mentorTag:{}
+    menteeTag: [],
+    mentorTag:[]
 })
 
 // USe BCrypt to hash
