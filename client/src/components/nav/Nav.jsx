@@ -2,7 +2,7 @@ import React, { useState, useMemo, forwardRef, } from 'react';
 import { Link } from 'react-router-dom';
 
 // Custom Components
-// import Signup from '../pages/Signup';
+
 
 // Material-UI Styling Components
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -23,21 +23,9 @@ import Hidden from '@material-ui/core/Hidden';
 import CloseIcon from '@material-ui/icons/Close';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-// import VisibleItemList from '../containers/VisibleItemList'
-
-
 
 
 const drawerWidth = 240;
-
-// const useStyles = makeStyles({
-//   list: {
-//     width: 250,
-//   },
-//   fullList: {
-//     width: 'auto',
-//   },
-// });
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -72,27 +60,61 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const ListItemLink = (props) => {
+  const { icon, primary, to } = props;
+
+  const renderLink = useMemo(
+    () =>
+      forwardRef((itemProps, ref) => (
+        // with react-router-dom@^5.0.0 use `ref` instead of `innerRef`
+        <Link to={to} {...itemProps} innerRef={ref} />
+      )),
+    [to],
+  );
+  
+  return (
+    <li>
+      <ListItem button component={renderLink} onClick={() => { alert('Button Clicked'); }}>
+        <ListItemIcon>{icon}</ListItemIcon>
+        <ListItemText primary={primary} />
+      </ListItem>
+    </li>
+  );
+}
+
+ListItemLink.propTypes = {
+  icon: PropTypes.node.isRequired,
+  primary: PropTypes.node.isRequired,
+  to: PropTypes.string.isRequired,
+  onclick: PropTypes.string.isRequired
+};
+
+
 const Nav = (props) => {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  function handleDrawerToggle() {
+
+  const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
   }
-
-  const pages = [ 'Home', 'Login', 'Signup', 'Logout', 'About']
-
+  
   const drawer = (
-    <div>
-      <List>
-        {pages.map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+    <div className={classes.list} role="presentation" >
+      <List component="nav" aria-label="TODO">
+        <ListItemLink to="/" primary="Home" icon={<InboxIcon />} />
+        <ListItemLink to="/signup" primary="Signup" icon={<DraftsIcon />} />
+        <ListItemLink to="/login" primary="Login" icon={<DraftsIcon />} />
+      </List>
+
+      <Divider />
+      <List component="nav" aria-label="home projects blog about">
+        <ListItemLink to="/about" primary="About" icon={<DraftsIcon />} />
+        <ListItemLink to="/logout" primary="Logout" icon={<DraftsIcon />} />
       </List>
     </div>
   );
+
 
   let headerString = '';
   if (props.user.firstname) {
@@ -132,7 +154,7 @@ const Nav = (props) => {
             <IconButton onClick={handleDrawerToggle} className={classes.closeMenuButton}>
               <CloseIcon />
             </IconButton>
-              {drawer}
+            {drawer}
           </Drawer>
         </Hidden>
         <Hidden xsDown implementation="css">

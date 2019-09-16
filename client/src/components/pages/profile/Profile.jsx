@@ -1,7 +1,10 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import ProfileHeader from './ProfileHeader';
+<<<<<<< Updated upstream
 import ProfileDetails from './ProfileDetails'
+=======
+>>>>>>> Stashed changes
 
 
 const Profile = (props) => {
