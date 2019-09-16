@@ -14,7 +14,7 @@ import Footer from './components/footer/Footer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 // import Typography from '@material-ui/core/Typography';
 // import Container from '@material-ui/core/Container';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/Styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,8 +22,14 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     minHeight: '100vh'
   },
+  main: {
+    margin: '0px 0px 0px 0px',
+    [theme.breakpoints.up('sm')]: {
+      margin: '0px 0px 0px 240px',
+      flexShrink: 0,
+    },
+  }
 }));
-
 
 // class App extends React.Component {
 const App = () => {
@@ -66,7 +72,7 @@ const App = () => {
         <CssBaseline />
         <div className={classes.root}>
           <Header user={user} updateUser={getUser} />
-          <main>
+          <main className={classes.main} >
             <Routes user={user} updateUser={getUser} />
           </main>
           <Footer />
@@ -77,10 +83,4 @@ const App = () => {
 }
 
 export default App;
-
-
-
-
-
-
 
