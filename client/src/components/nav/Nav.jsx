@@ -23,7 +23,7 @@ import Hidden from '@material-ui/core/Hidden';
 import CloseIcon from '@material-ui/icons/Close';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const drawerWidth = 240;
 
@@ -71,10 +71,10 @@ const ListItemLink = (props) => {
       )),
     [to],
   );
-  
+
   return (
     <li>
-      <ListItem button component={renderLink} onClick={() => { alert('Button Clicked'); }}>
+      <ListItem button component={renderLink} onClick={() => { props.clickAction() }}>
         <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText primary={primary} />
       </ListItem>
@@ -86,35 +86,39 @@ ListItemLink.propTypes = {
   icon: PropTypes.node.isRequired,
   primary: PropTypes.node.isRequired,
   to: PropTypes.string.isRequired,
-  onclick: PropTypes.string.isRequired
+  clickAction: PropTypes.func.isRequired
 };
-
 
 const Nav = (props) => {
   const classes = useStyles();
   const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen)
+    if (matches) {
+      setMobileOpen(false);
+    } else {
+      setMobileOpen(!mobileOpen);
+    }
   }
-  
+
   const drawer = (
     <div className={classes.list} role="presentation" >
       <List component="nav" aria-label="TODO">
-        <ListItemLink to="/" primary="Home" icon={<InboxIcon />} />
-        <ListItemLink to="/signup" primary="Signup" icon={<DraftsIcon />} />
-        <ListItemLink to="/login" primary="Login" icon={<DraftsIcon />} />
+        <ListItemLink to="/" primary="Home" icon={<InboxIcon />} clickAction={handleDrawerToggle} />
+        <ListItemLink to="/signup" primary="Signup" icon={<DraftsIcon />} clickAction={handleDrawerToggle} />
+        <ListItemLink to="/login" primary="Login" icon={<DraftsIcon />} clickAction={handleDrawerToggle} />
       </List>
 
       <Divider />
-      <List component="nav" aria-label="home projects blog about">
-        <ListItemLink to="/about" primary="About" icon={<DraftsIcon />} />
-        <ListItemLink to="/logout" primary="Logout" icon={<DraftsIcon />} />
+      <List component="nav" aria-label="TODO">
+        <ListItemLink to="/about" primary="About" icon={<DraftsIcon />} clickAction={handleDrawerToggle} />
+        <ListItemLink to="/logout" primary="Logout" icon={<DraftsIcon />} clickAction={handleDrawerToggle} />
       </List>
     </div>
   );
-
 
   let headerString = '';
   if (props.user.firstname) {

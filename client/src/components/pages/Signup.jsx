@@ -3,7 +3,9 @@ import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import BASE_URL from '../../constants';
 
-// class Signup extends React.Component {
+// Material-UI Imports
+import Button from '@material-ui/core/Button';
+
 
 const Signup = (props) => {
 
@@ -13,13 +15,6 @@ const Signup = (props) => {
     email: '',
     password: ''
   });
-
-  // const storeInput = (e) => {
-  //   console.log(e.target.value)
-  //   setState({
-  //     [e.target.name]: e.target.value
-  //   })
-  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,7 +57,7 @@ const Signup = (props) => {
             <label>Password: </label>
             <input name='password' type='password' placeholder='Your email address...' />
           </div>
-          <button type="submit">Register</button>
+          <Button type="submit">Register</Button>
 
         </form>
       </div>
