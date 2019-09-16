@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import ProfileHeader from './ProfileHeader';
 import ProfileDetails from './ProfileDetails';
+import Tags from './Tags';
 
 const Profile = (props) => {
 
@@ -13,6 +14,7 @@ const Profile = (props) => {
   return (
     <div>
       <ProfileHeader user={props.user}/>
+      <Tags user={props.user} />
       <p>Future Profile Details Component</p>
       <ProfileDetails user={props.user}/>
     </div>
