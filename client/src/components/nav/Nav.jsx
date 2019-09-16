@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// Custom Components
+// import Signup from '../pages/Signup';
+
+// Material-UI Styling Components
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -71,6 +75,7 @@ const Nav = (props) => {
     <div className={classes.list} role="presentation" onClick={toggleDrawer(side, false)} onKeyDown={toggleDrawer(side, false)} >
       <List component="nav" aria-label="home login logout about">
         <ListItemLink to="/" primary="Home" icon={<InboxIcon />} />
+        <ListItemLink to="/signup" primary="Signup" icon={<DraftsIcon />} />
         <ListItemLink to="/login" primary="Login" icon={<DraftsIcon />} />
       </List>
 

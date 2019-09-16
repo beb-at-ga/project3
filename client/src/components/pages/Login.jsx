@@ -11,7 +11,6 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(`Submit: ${email}, ${password}, ${message}`)
 
     let postBody = {
       email: email,

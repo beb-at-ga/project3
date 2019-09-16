@@ -1,62 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import BASE_URL from '../../constants';
 
+// class Signup extends React.Component {
 
-class Signup extends React.Component {
+const Signup = (props) => {
 
-  state = {
+  const [state, setState] = useState({
     firstname: '',
     lastname: '',
     email: '',
     password: ''
-  }
+  });
 
-  storeInput = (e) => {
-    // console.log(e.target.value)
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
+  // const storeInput = (e) => {
+  //   console.log(e.target.value)
+  //   setState({
+  //     [e.target.name]: e.target.value
+  //   })
+  // }
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state, BASE_URL);
+    state.firstname = e.target.firstname.value;
+    state.lastname = e.target.lastname.value;
+    state.email = e.target.email.value;
+    state.password = e.target.password.value;
 
-    axios.post(`${BASE_URL}/auth/signup`, this.state)
-    .then(response => {
-      console.log(response);
+    console.log(state, BASE_URL);
 
-      localStorage.setItem('authToken', response.data.token)
+    axios.post(`${BASE_URL}/auth/signup`, state)
+      .then(response => {
+        console.log(response);
 
-      this.props.updateUser();
+        localStorage.setItem('authToken', response.data.token)
 
-    })
-    .catch(err => {
-      console.log(err);
-    })
+        props.updateUser();
+
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
-  render() {
-
-    if (this.props.user) {
-      return <Redirect to='/profile' />
-    }
- 
+  if (props.user._id) {
+    return <Redirect to='/profile' />
+  } else {
     return (
       <div>
         <h2>Register</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div>
             <label>First Name: </label>
-            <input name='firstname' type='text' placeholder='Your first name...' onChange={this.storeInput} />
+            {/* <input name='firstname' type='text' placeholder='Your first name...' onChange={storeInput} /> */}
+            <input name='firstname' type='text' placeholder='Your first name...' />
             <label>Last Name: </label>
-            <input name='lastname' type='text' placeholder='Your last name...' onChange={this.storeInput} />
+            <input name='lastname' type='text' placeholder='Your last name...' />
             <label>Email: </label>
-            <input name='email' type='email' placeholder='Your email address...' onChange={this.storeInput} />
+            <input name='email' type='email' placeholder='Your email address...' />
             <label>Password: </label>
-            <input name='password' type='password' placeholder='Your email address...' onChange={this.storeInput} />
+            <input name='password' type='password' placeholder='Your email address...' />
           </div>
           <button type="submit">Register</button>
 
