@@ -6,6 +6,7 @@ let tagSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 1
+    }
 })
 
 module.exports = mongoose.model('Tag', tagSchema)
