@@ -6,43 +6,54 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
+
+
+const drawerWidth = 275;
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   title: {
     flexGrow: 1,
   },
+  appBar: {
+    position: "absolute",
+    marginLeft: drawerWidth,
+    [theme.breakpoints.up("md")]: {
+      zIndex: theme.zIndex.drawer + 1
+    }
+  },
+  navIconHide: {
+    [theme.breakpoints.up("md")]: {
+      display: "none"
+    }
+  },
+  toolbar: theme.mixins.toolbar,
+  drawerPaper: {
+    width: drawerWidth,
+    [theme.breakpoints.up("md")]: {
+      position: "relative"
+    }
+  },
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+  }
 }));
 
 const Header = (props) => {
 
   const classes = useStyles();
 
-  let headerString = '';
-  
-  if (props.user.firstname) {
-    headerString = `Hi, ${props.user.firstname}!`;
-  } else {
-    // console.log(props.user);
-    headerString = 'Hello.'
-  }
-
   return (
     <div>
-      <AppBar position="static">
-        <Toolbar >
-          <Nav user={props.user} updateUser={props.updateUser} />
-            <Typography variant="h6" className={classes.title}>
-              {headerString}             
-          </Typography>
-          {/* <Button color="inherit">Login</Button> */}
-        </Toolbar>
-      </AppBar>
-    </div>)
+      <Toolbar >
+        <Nav user={props.user} updateUser={props.updateUser} />
+        {/* <Button color="inherit">Login</Button> */}
+      </Toolbar>
+    </div>
+  )
 }
 
 export default Header;
