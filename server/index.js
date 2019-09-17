@@ -44,7 +44,6 @@ app.use(
   require("./controllers/profiles")
 );
 
-
 //Catch-All route
 app.get("*", (req, res) => {
   res.status(404).send({ message: "Not Found" });

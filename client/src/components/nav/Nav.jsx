@@ -16,6 +16,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import DraftsIcon from '@material-ui/icons/Drafts';
+import DeleteIcon from '@material-ui/icons/DeleteForever';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Drawer from '@material-ui/core/Drawer';
@@ -116,6 +117,10 @@ const Nav = (props) => {
         <List component="nav" aria-label="TODO">
           <ListItemLink to="/logout" primary="Logout" icon={<DraftsIcon />} clickAction={handleDrawerToggle} />
           <ListItemLink to="/about" primary="About" icon={<DraftsIcon />} clickAction={handleDrawerToggle} />
+        </List>
+        <Divider />
+        <List component="nav" aria-label="TODO">
+            <ListItemLink to="/deleteUser" primary="Delete User" icon={<DeleteIcon />} clickAction={handleDrawerToggle} />
         </List>
       </div>
     );
