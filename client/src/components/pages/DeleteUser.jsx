@@ -3,9 +3,18 @@ import BASE_URL from '../../constants';
 import React, { useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 
-const DeleteUser = (props)=> {
+const DeleteUser = (props) => {
+    
+    console.log('ID to be deleted: ', props.user._id)
     const handleDelete = () => {
-        axios.delete(`${BASE_URL}/profiles/`, this.props.user._id)
+        let token = localStorage.getItem('authToken')
+        console.log(token)
+        axios.delete(`${BASE_URL}/profiles/`, props.user._id,
+            {
+                headers: { 'Authorization': `Bearer ${token}` }
+            }
+        )
+
         .then(response => {
             console.log(response)
             localStorage.removeItem('authToken')
