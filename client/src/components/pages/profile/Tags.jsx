@@ -1,7 +1,9 @@
 import React from 'react'
 
 import Chip from '@material-ui/core/Chip';
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,19 +24,23 @@ const Tags = (props) => {
   let menteeTag;
 
   if (props.user.mentorTag && props.user.menteeTag) {
-    mentorTag = props.user.mentorTag.map((tag, idx) => <Chip label={tag} className={classes.chip} key={idx} color="primary"/>)
-    menteeTag = props.user.menteeTag.map((tag, idx) => <Chip label={tag} className={classes.chip} key={idx} color="secondary"/>)
+    mentorTag = props.user.mentorTag.map((tag, idx) => <Chip label={tag} className={classes.chip} key={idx} color="primary" />)
+    menteeTag = props.user.menteeTag.map((tag, idx) => <Chip label={tag} className={classes.chip} key={idx} color="secondary" />)
   } else if (props.user.menteeTag) {
-    menteeTag = props.user.menteeTag.map((tag, idx) => <Chip label={tag} className={classes.chip} key={idx} color="secondary"/>)
+    menteeTag = props.user.menteeTag.map((tag, idx) => <Chip label={tag} className={classes.chip} key={idx} color="secondary" />)
   } else if (props.user.mentorTag) {
-    mentorTag = props.user.mentorTag.map((tag, idx) => <Chip label={tag} className={classes.chip} key={idx} color="primary"/>)
+    mentorTag = props.user.mentorTag.map((tag, idx) => <Chip label={tag} className={classes.chip} key={idx} color="primary" />)
   } else {
   }
 
   return (
     <div>
-      {mentorTag}
-      {menteeTag}
+      
+
+      <Box >
+        {mentorTag}
+        {menteeTag}
+      </Box>
     </div>
   )
 }

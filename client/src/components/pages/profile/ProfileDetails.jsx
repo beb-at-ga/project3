@@ -58,7 +58,6 @@ class ProfileDetails extends React.Component {
     let body = {
       bio: text
     }
-
     // Save the new bio into the users db credentials
     axios.put(`${BASE_URL}/profiles/${this.props.user._id}`, body, {
       headers: { 'Authorization': `Bearer ${localStorage.getItem('authToken')}` }

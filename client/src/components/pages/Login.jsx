@@ -17,13 +17,7 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 200,
-  },
-  dense: {
-    marginTop: 19,
-  },
-  menu: {
-    width: 200,
+    width: '100%',
   },
 }));
 
@@ -65,7 +59,6 @@ const Login = (props) => {
   // const handleChange = name => event => {
   //   setValues({ ...values, [name]: event.target.value });
   // };
-
 
   if (props.user._id) {
     return <Redirect to='/profile' />
