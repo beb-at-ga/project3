@@ -1,6 +1,15 @@
 let bcrypt = require('bcryptjs')
 let mongoose = require('mongoose')
 
+// Define our projectSchema
+let projectSchema = new mongoose.Schema({
+    name: String,
+    starteDate: String,
+    endDate: String,
+    link: String,
+    about: String
+})
+
 let userSchema = new mongoose.Schema({
     firstname: {
         type: String,
@@ -29,7 +38,8 @@ let userSchema = new mongoose.Schema({
     bio: String,
     zipcode: Number,
     menteeTag: [],
-    mentorTag: []
+    mentorTag: [],
+    projects: projectSchema
 })
 
 // USe BCrypt to hash
