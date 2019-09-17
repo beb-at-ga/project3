@@ -7,7 +7,7 @@ import ProfileHeaderEdit from './ProfileHeaderEdit';
 // Material-UI Components
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 
 const ProfileHeader = (props) => {
   let profilePic = '';

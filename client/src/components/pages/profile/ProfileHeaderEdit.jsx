@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
 
 // Material-UI Components
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import Modal from '@material-ui/core/Modal';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
+// import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 
@@ -50,11 +47,12 @@ const ProfileHeaderEdit = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setOpen(false);
-    console.log(event.target.firstname.value);
-    console.log(event.target.lastname.value);
-    console.log(event.target.email.value);
-    console.log(event.target.menteeTag.value);
-    console.log(event.target.mentorTag.value);
+    console.log(firstname);
+    console.log(lastname);
+    console.log(email);
+    console.log(menteeTag);
+    console.log(mentorTag);
+    console.log(profilePic);
 
     // put to profiles route
     // get new jwt token
@@ -73,7 +71,7 @@ const ProfileHeaderEdit = (props) => {
   //   profilePic = <img src='http://placegoat.com/100/100' alt='profile'></img>
   // }
 
-  let test = 'fdfd';
+  // let test = 'fdfd';
 
   return (
     <div>
