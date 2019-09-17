@@ -13,7 +13,6 @@ const Profile = (props) => {
   return (
     <div>
       <ProfileHeader user={props.user}/>
-      <p>Future Profile Details Component</p>
       <ProfileDetails user={props.user}/>
     </div>
   )
