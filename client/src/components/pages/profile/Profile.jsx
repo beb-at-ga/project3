@@ -18,6 +18,7 @@ const Profile = (props) => {
       <Tags user={props.user} />
       <ProfileDetails user={props.user}/>
       <TagSearch />
+      <ProfileDetails user={props.user} updateUser={props.updateUser}/>
     </div>
   )
 }

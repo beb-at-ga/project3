@@ -19,7 +19,6 @@ let userSchema = new mongoose.Schema({
         required: true,
         minlength: 8,
         maxlength: 32
-
     },
     profilePic: String,
     age: Number,
