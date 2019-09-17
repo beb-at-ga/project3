@@ -1,7 +1,7 @@
 import React from 'react';
+import { useStyles } from '../../theme';
 
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 
@@ -17,15 +17,6 @@ function Copyright() {
     </Typography>
   );
 }
-
-const useStyles = makeStyles(theme => ({
-  footer: {
-    padding: theme.spacing(2),
-    marginTop: 'auto',
-    backgroundColor: 'lightgray',
-    zIndex: theme.zIndex.drawer + 1,
-  },
-}));
 
 const Footer = () => {
   const classes = useStyles();

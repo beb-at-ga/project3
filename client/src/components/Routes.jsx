@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/Styles'
+import { useStyles } from '../theme';
+
 
 // Custome components
 import Home from '../components/pages/Home';
@@ -11,12 +12,6 @@ import Logout from '../components/pages/Logout';
 import DeleteUser from '../components/pages/DeleteUser';
 
 
-const useStyles = makeStyles(theme => ({
-  container: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
-}));
 
 const Routes = (props) => {
   const classes = useStyles();
