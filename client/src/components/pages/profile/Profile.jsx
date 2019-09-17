@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import ProfileHeader from './ProfileHeader';
 import ProfileDetails from './ProfileDetails';
 import Tags from './Tags';
+import TagSearch from '../TagSearch';
 
 const Profile = (props) => {
 
@@ -16,6 +17,7 @@ const Profile = (props) => {
       <ProfileHeader user={props.user}/>
       <Tags user={props.user} />
       <ProfileDetails user={props.user}/>
+      <TagSearch />
     </div>
   )
 }
