@@ -27,13 +27,13 @@ const ProfileHeaderEdit = (props) => {
     let mentorTagArr;
 
     if (e.target.menteeTag.value) {
-      menteeTagArr = e.target.menteeTag.value.split(',');
+        menteeTagArr = e.target.menteeTag.value.split(',').map(str => str.trim());
     } else {
       menteeTagArr = [];
     }
 
     if (e.target.mentorTag.value) {
-      mentorTagArr = e.target.mentorTag.value.split(',');
+        mentorTagArr = e.target.mentorTag.value.split(',').map(str => str.trim());
     } else {
       mentorTagArr = [];
     }
