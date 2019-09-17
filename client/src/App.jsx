@@ -38,7 +38,7 @@ const App = () => {
   }, []);
 
   const getUser = () => {
-    console.log("Get user is running")
+    // console.log("Get user is running")
     // see if there is a token in localStorage
     let token = localStorage.getItem("authToken");
 

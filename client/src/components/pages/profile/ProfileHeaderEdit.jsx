@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import BASE_URL from '../../../constants';
+import axios from 'axios';
 
 // Material-UI Components
 import Button from '@material-ui/core/Button';
@@ -30,33 +32,63 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 const ProfileHeaderEdit = (props) => {
 
-  // const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
-  const [email, setEmail] = useState('');
-  const [menteeTag, setMenteeTag] = useState('');
-  const [mentorTag, setMentorTag] = useState('');
-  const [profilePic, setProfilePic] = useState('');
+  // const [firstname, setFirstname] = useState('');
+  // const [lastname, setLastname] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [menteeTag, setMenteeTag] = useState('');
+  // const [mentorTag, setMentorTag] = useState('');
+  // const [profilePic, setProfilePic] = useState('');
 
   function handleClickOpen() {
     setOpen(true);
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setOpen(false);
-    console.log(firstname);
-    console.log(lastname);
-    console.log(email);
-    console.log(menteeTag);
-    console.log(mentorTag);
-    console.log(profilePic);
 
-    // put to profiles route
-    // get new jwt token
-    // call updateUser
+    let menteeTagArr;
+    let mentorTagArr;
+
+    if (e.target.menteeTag.value) {
+      menteeTagArr = e.target.menteeTag.value.split(',');
+    } else {
+      menteeTagArr = [];
+    }
+
+    if (e.target.mentorTag.value) {
+      mentorTagArr = e.target.mentorTag.value.split(',');
+    } else {
+      mentorTagArr = [];
+    }
+
+    let body = {
+      firstname: e.target.firstname.value,
+      lastname: e.target.lastname.value,
+      email: e.target.email.value,
+      menteeTag: menteeTagArr,
+      mentorTag: mentorTagArr,
+      profilePic: e.target.profilePic.value
+    }
+    
+    console.log(body);
+
+    axios.put(`${BASE_URL}/profiles/${props.user._id}`, body, {
+      headers: { 'Authorization': `Bearer ${localStorage.getItem('authToken')}` }
+    })
+      .then(response => {
+        console.log(response);
+        // saving the new token so that the user's edits will be rendered
+        localStorage.setItem('authToken', response.data.token);
+        props.updateUser();
+
+        // Go back to the Bio component that just shows the text
+        // this.setState({
+        //   currentTab: 'bio'
+        // })
+      })
 
   }
 
@@ -84,27 +116,21 @@ const ProfileHeaderEdit = (props) => {
 
             <TextField autoFocus margin="dense" id="firstname" label="First Name"
               type="text" fullWidth name='firstname' defaultValue={props.user.firstname}
-              onChange={(e) => setFirstname(e.target.value)}
             />
             <TextField margin="dense" id="lastname" label="Last Name"
               type="text" fullWidth name='lastname' defaultValue={props.user.lastname}
-              onChange={(e) => setLastname(e.target.value)}
             />
             <TextField margin="dense" id="email" label="E-Mail"
               type="email" fullWidth name='email' defaultValue={props.user.email}
-              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField margin="dense" id="profilePic" label="Profile Pic URL"
               type="text" fullWidth name='profilePic' defaultValue={props.user.profilePic}
-              onChange={(e) => setProfilePic(e.target.value)}
             />
-            <TextField margin="dense" id="menteeTag" label="Mentee Tags"
+            <TextField margin="dense" id="menteeTag" label="Mentee Tags (Comma seperated)"
               type="text" fullWidth name='menteeTag' defaultValue={props.user.menteeTag}
-              onChange={(e) => setMenteeTag(e.target.value)}
             />
-            <TextField margin="dense" id="mentorTag" label="Mentor Tags"
+            <TextField margin="dense" id="mentorTag" label="Mentor Tags (Comma seperated)"
               type="text" fullWidth name='mentorTag' defaultValue={props.user.mentorTag}
-              onChange={(e) => setMentorTag(e.target.value)}
             />
 
             <DialogActions>

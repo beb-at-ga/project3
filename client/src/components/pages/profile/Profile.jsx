@@ -14,11 +14,11 @@ const Profile = (props) => {
 
   return (
     <div>
-      <ProfileHeader user={props.user}/>
+      <ProfileHeader user={props.user} updateUser={props.updateUser} />
       <Tags user={props.user} />
-      <ProfileDetails user={props.user}/>
+      {/* <ProfileDetails user={props.user}/> */}
       {/* <TagSearch /> */}
-      <ProfileDetails user={props.user} updateUser={props.updateUser}/>
+      <ProfileDetails user={props.user} updateUser={props.updateUser} />
     </div>
   )
 }

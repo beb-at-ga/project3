@@ -29,7 +29,7 @@ let userSchema = new mongoose.Schema({
     bio: String,
     zipcode: Number,
     menteeTag: [],
-    mentorTag:[]
+    mentorTag: []
 })
 
 // USe BCrypt to hash
