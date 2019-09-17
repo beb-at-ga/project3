@@ -9,7 +9,7 @@ const DeleteUser = (props) => {
     const handleDelete = () => {
         let token = localStorage.getItem('authToken')
         console.log(token)
-        axios.delete(`${BASE_URL}/profiles/`, props.user._id,
+        axios.delete(`${BASE_URL}/profiles/${props.user._id}`,
             {
                 headers: { 'Authorization': `Bearer ${token}` }
             }
