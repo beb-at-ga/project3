@@ -8,6 +8,8 @@ import Profile from '../components/pages/profile/Profile';
 import Login from '../components/pages/Login';
 import Signup from '../components/pages/Signup';
 import Logout from '../components/pages/Logout';
+import DeleteUser from '../components/pages/DeleteUser';
+
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -37,6 +39,9 @@ const Routes = (props) => {
       } />
       <Route path='/logout' render={
         () => <Logout user={props.user} updateUser={props.updateUser} />
+      } />
+      <Route path='/deleteuser' render={
+        () => <DeleteUser user={props.user} updateUser={props.updateUser} />
       } />
     </div>
   )

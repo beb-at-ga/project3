@@ -120,7 +120,7 @@ const Nav = (props) => {
         </List>
         <Divider />
         <List component="nav" aria-label="TODO">
-            <ListItemLink to="/deleteuser" primary="Delete User" icon={<DeleteIcon />} clickAction={handleDrawerToggle} />
+            <ListItemLink to="/deleteUser" primary="Delete User" icon={<DeleteIcon />} clickAction={handleDrawerToggle} />
         </List>
       </div>
     );
