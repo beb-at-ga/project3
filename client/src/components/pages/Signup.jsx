@@ -48,7 +48,6 @@ const Signup = (props) => {
         <form onSubmit={handleSubmit}>
           <div>
             <label>First Name: </label>
-            {/* <input name='firstname' type='text' placeholder='Your first name...' onChange={storeInput} /> */}
             <input name='firstname' type='text' placeholder='Your first name...' />
             <label>Last Name: </label>
             <input name='lastname' type='text' placeholder='Your last name...' />
