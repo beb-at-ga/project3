@@ -1,6 +1,7 @@
 // create router adn reference to models
 let router = require('express').Router()
 let db = require('../models');
+let jwt = require("jsonwebtoken");
 
 // GET /profiles/:id
 router.get('/:id', (req, res) => {
@@ -29,7 +30,11 @@ router.put('/:id', (req, res) => {
         new: true
     })
     .then(editedUser => {
-        res.send(editedUser)
+        // since the user has been updated, we need to assign them a new token
+        let token = jwt.sign(editedUser.toJSON(), process.env.JWT_SECRET, {
+            expiresIn: 60 * 60 * 8 // (8 hours in seconds)
+          });
+        res.send({ editedUser, token })
     })
     .catch(err => {
         console.log(err)

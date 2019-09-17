@@ -9,126 +9,97 @@ import BASE_URL from '../../../constants';
 
 class ProfileDetails extends React.Component {
   state = {
-    bio: true,
-    editBio: false,
-    text: "",
-    reviews: false,
-    messages: false,
-    projects: false
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.user.firstname !== this.props.user.firstname) {
-      this.setState({
-        text: this.props.user.bio
-      })
-    }
+    currentTab: 'bio'
   }
 
   changeContentToBio = (e) => {
     // update the state to render the correct component
     this.setState({
-      bio: true,
-      reviews: false,
-      messages: false,
-      projects: false
+      currentTab: 'bio'
     })
   }
 
   changeContentToReviews = (e) => {
     // update the state to render the correct component
     this.setState({
-      bio: false,
-      reviews: true,
-      messages: false,
-      projects: false
+      currentTab: 'reviews'
     })
   }
 
   changeContentToMessages = (e) => {
     // update the state to render the correct component
     this.setState({
-      bio: false,
-      reviews: false,
-      messages: true,
-      projects: false
+      currentTab: 'messages'
     })
   }
 
   changeContentToProjects = (e) => {
     // update the state to render the correct component
     this.setState({
-      bio: false,
-      reviews: false,
-      messages: false,
-      projects: true
+      currentTab: 'projects'
+    })
+  }
+
+  changeContentToEditBio = (e) => {
+    // Take me to the BioEdit component
+    this.setState({
+      currentTab: 'editBio'
     })
   }
 
   editBio = (e) => {
-    console.log("edit me!")
     // Take me to the BioEdit component
     this.setState({
-      bio: false,
-      editBio: true
-    })
-    console.log("I made it!")
-  }
-
-  handleTextInput = (e) => {
-    this.setState({
-      text: e.target.value
+      currentTab: 'editBio'
     })
   }
 
-  updateBio = (props) => {
-    console.log("update me!")
-    console.log(this.state.text)
-
+  updateBio = (text) => {
     let body = {
-      bio: this.state.text
+      bio: text
     }
 
     // Save the new bio into the users db credentials
     axios.put(`${BASE_URL}/profiles/${this.props.user._id}`, body, {
       headers: { 'Authorization': `Bearer ${localStorage.getItem('authToken')}` }
     })
-      .then(response => {
-        console.log(response);
-        // this.props.updateUser();
+    .then(response => {
+      console.log(response);
+      // saving the new token so that the user's edits will be rendered
+      localStorage.setItem('authToken', response.data.token);
+      this.props.updateUser();
+
+      // Go back to the Bio component that just shows the text
+      this.setState({
+        currentTab: 'bio'
       })
-    // Go back to the Bio component that just shows the text
-    this.setState({
-      bio: true,
-      editBio: false
+      console.log("All done master!")
     })
-    console.log("All done master!")
   }
 
   render() {
     let content;
 
-    if (this.state.bio === true) {
-      content = (
-        <Bio user={this.props.user} editBio={this.editBio} />
-      )
-    } else if (this.state.reviews === true) {
-      content = (
-        <Reviews />
-      )
-    } else if (this.state.messages === true) {
-      content = (
-        <Messages />
-      )
-    } else if (this.state.projects === true) {
-      content = (
-        <Projects />
-      )
-    } else if (this.state.editBio === true) {
-      content = (
-        <BioEdit value={this.state.text} handleTextInput={this.handleTextInput} updateBio={this.updateBio} />
-      )
+    switch (this.state.currentTab) {
+      case 'bio':
+        content = <Bio userBio={this.props.user ? this.props.user.bio : ''} editBio={this.editBio} />
+        break;
+      case 'reviews':
+        content = <Reviews />
+        break;
+      case 'editBio':
+        content = <BioEdit value={this.props.user ? this.props.user.bio : ''}  updateBio={this.updateBio} />
+        break;
+      case 'projects':
+        content = <Projects />
+        break;
+      case 'messages':
+        content = <Messages />
+        break;
+      default:
+        content = <div>You should not get here - check spelling</div>
     }
+
     return (
       <div className="profileDetails">
         <span>
@@ -148,10 +119,9 @@ class ProfileDetails extends React.Component {
         <div>
           {content}
         </div>
-      </div>
-
-    )
-  }
+    </div>
+  )
+}
 }
 
 export default ProfileDetails
