@@ -2,6 +2,14 @@
 let router = require('express').Router()
 let db = require('../../models')
 
+//GET all tags
+router.get('/', (req, res) => {
+    db.Tag.find()
+    .then(tags => {
+        res.status(201).send(tags)
+    })
+})
+
 //POST to /tags
 router.post('/', (req, res) => {
     db.Tag.create(req.body)
