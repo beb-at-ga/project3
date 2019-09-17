@@ -21,13 +21,13 @@ router.get('/:id', (req, res) => {
 })
 
 //POST /profiles/search
-router.get('/search', (req, res) => {
+router.post('/search', (req, res) => {
+    console.log(req.body.tags)
     db.User.find({
-        $or:
-            [
-                { mentorTag: [e.target.value] },
-                { menteeTag: [e.target.value] }
-            ]
+        $or: [
+            {mentorTag: { $all: req.body.tags }},
+            {menteeTag: { $all: req.body.tags }}
+        ]
     })
         .then(foundUsers => {
             res.send({ foundUsers })
