@@ -20,6 +20,20 @@ router.get('/:id', (req, res) => {
     })
 })
 
+//POST /profiles/search
+router.get('/search', (req, res) => {
+    db.User.find({
+        $or:
+            [
+                { mentorTag: [e.target.value] },
+                { menteeTag: [e.target.value] }
+            ]
+    })
+        .then(foundUsers => {
+            res.send({ foundUsers })
+        })
+})
+
 // PUT /profiles/:id
 router.put('/:id', (req, res) => {
     db.User.findOneAndUpdate({
