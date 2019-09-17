@@ -15,7 +15,6 @@ const Profile = (props) => {
     <div>
       <ProfileHeader user={props.user}/>
       <Tags user={props.user} />
-      <p>Future Profile Details Component</p>
       <ProfileDetails user={props.user}/>
     </div>
   )
