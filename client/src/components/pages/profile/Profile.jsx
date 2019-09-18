@@ -6,6 +6,13 @@ import Tags from './Tags';
 import TagSearch from '../TagSearch';
 import { Grid } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+
+
 
 
 const Profile = (props) => {
@@ -25,7 +32,9 @@ const Profile = (props) => {
                 <ProfileDetails user={props.user} updateUser={props.updateUser} />
             </Grid>
             <Grid item>
-                <TagSearch />
+                <Card>
+                    <TagSearch />
+                  </Card>
             </Grid>
         </Grid>
       </Box>
