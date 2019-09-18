@@ -63,7 +63,7 @@ const ProfileHeaderEdit = (props) => {
 
   return (
     <div>
-      <Button onClick={handleClickOpen}>Edit Your Overview</Button>
+      <Button color="primary" onClick={handleClickOpen}>Edit Your Overview</Button>
 
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Edit Your Overview</DialogTitle>

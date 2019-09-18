@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import BASE_URL from '../../constants';
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField';
 
 
 
@@ -76,16 +78,18 @@ class  TagSearch extends React.Component {
     return(
         <div>
             <form onSubmit={this.searchList}>
-                <label htmlFor="tag-search">Tag Search:</label>
-                <input type="text" name="tag-search" value={this.state.tagsInput} onChange={this.handleChange} />
-                <button type="submit">Search Tags</button>
+                <TextField margin="dense" id="tag-search" label="Tag Search"
+                    type="text" halfWidth name='lastname' value={this.state.tagsInput} onChange={this.handleChange}
+                />
+                {/* <label htmlFor="tag-search">Tag Search:</label>
+                <input type="text" name="tag-search" value={this.state.tagsInput} onChange={this.handleChange} /> */}
+                <Button type="submit"color="primary">Search Tags</Button>
             </form>
             <hr />
             <h3>Here is a List of Mentors: </h3>
             <h4>{mentorsList}</h4>
             <h3>Here is a List of Other Mentees: </h3>
             <h4>{menteesList}</h4>
-            <hr />
         </div>
         )
     }
