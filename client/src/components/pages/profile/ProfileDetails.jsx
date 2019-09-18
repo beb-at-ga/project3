@@ -1,12 +1,9 @@
 // Needed for program
 import React, { useState } from 'react';
-import axios from 'axios';
 import Bio from './Bio';
 import Projects from './Projects';
 import Reviews from './Reviews';
 import Messages from './Messages';
-import BioEdit from './BioEdit';
-import BASE_URL from '../../../constants';
 
 // Needed for material-ui
 import PropTypes from 'prop-types';
@@ -55,7 +52,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function ScrollableTabsButtonAuto() {
+export default function ScrollableTabsButtonAuto(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -81,7 +78,7 @@ export default function ScrollableTabsButtonAuto() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0} >
-      <Bio />
+        <Bio user={props.user} updateUser={props.updateUser}/>
       </TabPanel>
       <TabPanel value={value} index={1} >
         <Projects />
