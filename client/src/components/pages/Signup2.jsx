@@ -66,7 +66,7 @@ const Signup = (props) => {
   }
   const handleCancel = () => {
     setOpen(false);
-    redirectHome(true);
+    setRedirectHome(true);
   }
 
   if (props.user._id || redirectProfile === true) {
@@ -76,7 +76,7 @@ const Signup = (props) => {
   } else {
     return (
       <div>
-        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <Dialog open={open} aria-labelledby="form-dialog-title">
           <DialogContent>
             <h2>Signup</h2>
             <span className='red'>{message}</span>
