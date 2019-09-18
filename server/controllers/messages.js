@@ -2,6 +2,8 @@
 let router = require('express').Router()
 let db = require('../models')
 
+
+
 //Get /messages
 router.get('/', (req, res) => {
     db.Message.find()
@@ -14,4 +16,7 @@ router.get('/', (req, res) => {
         })
 })
 
-//POST /messages
+
+//POST /message
+
+

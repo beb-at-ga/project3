@@ -33,10 +33,10 @@ const Footer = () => {
     <footer position="fixed" className={classes.footer} >
       <Box >
         <div className='footerButtons'>
-          <PrivacyPolicy />
+          <About />
           <Faq />
           <UserGuide />
-          <About />
+          <PrivacyPolicy />
         </div>
       </Box>
       <Box textAlign="center" maxWidth="sm">
