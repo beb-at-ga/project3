@@ -25,12 +25,15 @@ const Profile = (props) => {
                     <ProfileHeader user={props.user} updateUser={props.updateUser} />
                     <Tags user={props.user} />
                     {/* <ProfileDetails user={props.user}/> */}
-                    <ProfileDetails user={props.user} updateUser={props.updateUser} />
                 </Grid>
-                <Grid item >
+                <Grid item xs={6}>
                     <Card>
                         <TagSearch />
                     </Card>
+                </Grid>
+                    <ProfileDetails user={props.user} updateUser={props.updateUser} />
+                <Grid>
+
                 </Grid>
             </Grid>
         </Box>
