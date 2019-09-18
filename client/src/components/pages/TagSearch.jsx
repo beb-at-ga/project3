@@ -59,7 +59,7 @@ class  TagSearch extends React.Component {
             return (
                 <ul key={i}>
                     <li>
-                        {m.firstname} {m.lastname} -- {m.mentorTag.join(', ')}
+                        <a href="/profiles/{m._id}">{m.firstname} {m.lastname}</a> -- {m.mentorTag.join(', ')}
                     </li>
                 </ul>
             )
@@ -69,7 +69,7 @@ class  TagSearch extends React.Component {
             return (
                 <ul key={i}>
                     <li>
-                        {m.firstname} {m.lastname} -- {m.menteeTag.join(', ')}
+                        <a href="/profiles/{m._id}">{m.firstname} {m.lastname}</a> -- {m.menteeTag.join(', ')}
                     </li>
                 </ul>
             )
