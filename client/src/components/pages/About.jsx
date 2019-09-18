@@ -1,5 +1,7 @@
 import React from 'react'
 
+import AboutText from './AboutText';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -60,7 +62,7 @@ const About = () => {
           </Toolbar>
         </AppBar>
         <Container>
-          <h2>This is some kick-ass About Us page.</h2>
+          <AboutText />
         </Container>
       </Dialog>
     </div>

@@ -10,6 +10,7 @@ import Login from '../components/pages/Login2';
 import Signup from '../components/pages/Signup2';
 import Logout from '../components/pages/Logout';
 import DeleteUser from '../components/pages/DeleteUser';
+import AboutText from '../components/pages/AboutText';
 
 
 
@@ -38,6 +39,7 @@ const Routes = (props) => {
       <Route path='/deleteuser' render={
         () => <DeleteUser user={props.user} updateUser={props.updateUser} />
       } />
+      <Route path='/about' component= {AboutText} />
     </div>
   )
 }
