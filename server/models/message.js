@@ -8,8 +8,6 @@ let messageSchema = new mongoose.Schema({
     recipId: String,
     msgBody: String,
     
-
-
 })
 
 module.exports = mongoose.model('Message', messageSchema)
