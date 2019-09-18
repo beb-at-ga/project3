@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 // Import Custom Components
 import ProfileHeaderEdit from './ProfileHeaderEdit';
 

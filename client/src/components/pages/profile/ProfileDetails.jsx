@@ -102,10 +102,10 @@ class ProfileDetails extends React.Component {
     return (
       <div className="profileDetails">
         <span>
-          <li onClick={this.changeContentToBio}>Bio </li>
-          <li onClick={this.changeContentToProjects}>Projects </li>
-          <li onClick={this.changeContentToReviews}>Reviews </li>
-          <li onClick={this.changeContentToMessages}>Messages </li>
+          <li onClick={this.changeContentToBio}>Bio</li>
+          <li onClick={this.changeContentToProjects}>Projects</li>
+          <li onClick={this.changeContentToReviews}>Reviews</li>
+          <li onClick={this.changeContentToMessages}>Messages</li>
         </span>
         <div>
           {content}
@@ -116,3 +116,4 @@ class ProfileDetails extends React.Component {
 }
 
 export default ProfileDetails
+
