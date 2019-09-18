@@ -62,18 +62,18 @@ class ProfileDetails extends React.Component {
     axios.put(`${BASE_URL}/profiles/${this.props.user._id}`, body, {
       headers: { 'Authorization': `Bearer ${localStorage.getItem('authToken')}` }
     })
-    .then(response => {
-      console.log(response);
-      // saving the new token so that the user's edits will be rendered
-      localStorage.setItem('authToken', response.data.token);
-      this.props.updateUser();
+      .then(response => {
+        console.log(response);
+        // saving the new token so that the user's edits will be rendered
+        localStorage.setItem('authToken', response.data.token);
+        this.props.updateUser();
 
-      // Go back to the Bio component that just shows the text
-      this.setState({
-        currentTab: 'bio'
+        // Go back to the Bio component that just shows the text
+        this.setState({
+          currentTab: 'bio'
+        })
+        console.log("All done master!")
       })
-      console.log("All done master!")
-    })
   }
 
   render() {
@@ -87,7 +87,7 @@ class ProfileDetails extends React.Component {
         content = <Reviews />
         break;
       case 'editBio':
-        content = <BioEdit value={this.props.user ? this.props.user.bio : ''}  updateBio={this.updateBio} />
+        content = <BioEdit value={this.props.user ? this.props.user.bio : ''} updateBio={this.updateBio} />
         break;
       case 'projects':
         content = <Projects user={this.props.user} />
@@ -102,25 +102,17 @@ class ProfileDetails extends React.Component {
     return (
       <div className="profileDetails">
         <span>
-          <li>
-            <a onClick={this.changeContentToBio}>Bio</a>
-          </li>
-          <li>
-            <a onClick={this.changeContentToProjects}>Projects</a>
-          </li>
-          <li>
-            <a onClick={this.changeContentToReviews}>Reviews</a>
-          </li>
-          <li>
-            <a onClick={this.changeContentToMessages}>Messages</a>
-          </li>
+          <li onClick={this.changeContentToBio}>Bio </li>
+          <li onClick={this.changeContentToProjects}>Projects </li>
+          <li onClick={this.changeContentToReviews}>Reviews </li>
+          <li onClick={this.changeContentToMessages}>Messages </li>
         </span>
         <div>
           {content}
         </div>
-    </div>
-  )
-}
+      </div>
+    )
+  }
 }
 
 export default ProfileDetails

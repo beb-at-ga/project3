@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 import BASE_URL from "./constants";
+import { useStyles, theme } from './theme';
 
 // Custom Components
 import Header from "./components/nav/Header";
@@ -11,29 +12,13 @@ import Footer from './components/footer/Footer';
 
 // Material UI Styling Components
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { makeStyles } from '@material-ui/core/Styles';
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '100vh'
-  },
-  main: {
-    margin: '0px 0px 0px 0px',
-    [theme.breakpoints.up('sm')]: {
-      margin: '0px 0px 0px 240px',
-      flexShrink: 0,
-    },
-  }
-}));
-
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 
 const App = () => {
   const [user, setUser] = useState({})
   const classes = useStyles();
 
-  useEffect( () => {
+  useEffect(() => {
     getUser();
   }, []);
 
@@ -64,18 +49,20 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <React.Fragment>
-        <CssBaseline />
-        <div className={classes.root}>
-          <Header user={user} updateUser={getUser} />
-          <main className={classes.main} >
-            <Routes user={user} updateUser={getUser} />
-          </main>
-          <Footer />
-        </div>
-      </React.Fragment>
-    </Router>
+    <MuiThemeProvider theme={theme}>
+      <Router>
+        <React.Fragment>
+          <CssBaseline />
+          <div className={classes.root}>
+            <Header user={user} updateUser={getUser} />
+            <main className={classes.main} >
+              <Routes user={user} updateUser={getUser} />
+            </main>
+            <Footer />
+          </div>
+        </React.Fragment>
+      </Router>
+    </MuiThemeProvider>
   );
 }
 
