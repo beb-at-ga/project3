@@ -6,7 +6,7 @@ import { useStyles } from '../theme';
 // Custome components
 import Home from '../components/pages/Home';
 import Profile from '../components/pages/profile/Profile';
-import Login from '../components/pages/Login';
+import Login from '../components/pages/Login2';
 import Signup from '../components/pages/Signup';
 import Logout from '../components/pages/Logout';
 import DeleteUser from '../components/pages/DeleteUser';

@@ -1,9 +1,17 @@
 import React from 'react';
 import { useStyles } from '../../theme';
 
+
+import PrivacyPolicy from '../pages/PrivacyPolicy';
+import About from '../pages/About';
+import UserGuide from '../pages/UserGuide';
+import Faq from '../pages/Faq';
+
+
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
+
 
 function Copyright() {
   return (
@@ -22,22 +30,14 @@ const Footer = () => {
   const classes = useStyles();
 
   return (
-    <footer position="fixed" className={classes.footer}>
-      <Box textAlign="center" maxWidth="sm">
-              <span>
-                  <li>
-                      <Link to="/about">About Us</Link>
-                  </li>
-                  <li>
-                      <Link to="/userguide">User Guide</Link>
-                  </li>
-                  <li>
-                      <Link to="/faq">FAQ</Link>
-                  </li>
-                  <li>
-                      <Link to="/privacy">Privacy Policy</Link>
-                  </li>
-              </span>
+    <footer position="fixed" className={classes.footer} >
+      <Box >
+        <div className='footerButtons'>
+          <PrivacyPolicy />
+          <Faq />
+          <UserGuide />
+          <About />
+        </div>
       </Box>
       <Box textAlign="center" maxWidth="sm">
         <Typography variant="body1"></Typography>

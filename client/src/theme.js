@@ -1,17 +1,14 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
-import yellow from "@material-ui/core/colors/yellow";
+import { yellow, blue } from "@material-ui/core/colors";
 
 
 export const theme = createMuiTheme({
   palette: {
-    primary: {
-      main: "#2e7d32"
-    },
+    primary: blue,
     secondary: yellow
   }
 });
-
 
 export const useStyles = makeStyles(theme => ({
   root: {
