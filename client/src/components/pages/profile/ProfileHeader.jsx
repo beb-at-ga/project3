@@ -15,11 +15,12 @@ const ProfileHeader = (props) => {
   } else {
     profilePic = <img src='http://placegoat.com/100/100' alt='profile'></img>
   }
-
   return (
     <Box >
-      <ProfileHeaderEdit user={props.user} updateUser={props.updateUser} />
-      <h1>{props.user.firstname} {props.user.lastname}</h1>
+      <div className='profileHeaderEdit'>
+        <h1>{props.user.firstname} {props.user.lastname}</h1>
+        <ProfileHeaderEdit user={props.user} updateUser={props.updateUser} />
+      </div>
       <Grid container spacing={3}>
         <Grid item xs >
           {profilePic}
@@ -29,8 +30,9 @@ const ProfileHeader = (props) => {
         </Grid>
         <Grid item xs={6}>
           <a href='htts://www.google.com'>Google</a>
-        </Grid>
+         </Grid>
       </Grid>
+
     </Box>
   )
 }

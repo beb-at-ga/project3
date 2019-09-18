@@ -17,7 +17,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-function TabPanel(props) {
+const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
 
   return (
@@ -55,7 +55,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function ScrollableTabsButtonAuto() {
+
+
+export default function ScrollableTabsButtonAuto(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -81,7 +83,7 @@ export default function ScrollableTabsButtonAuto() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0} >
-      <Bio />
+      <Bio user={props.user} />
       </TabPanel>
       <TabPanel value={value} index={1} >
         <Projects />

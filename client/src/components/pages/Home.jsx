@@ -5,6 +5,7 @@ const Home = (props) => {
   if (!props.user._id) {
     return (
       <div>
+        <img src={process.env.PUBLIC_URL + '/public/mentorimage.png'} />;
         <p>Unauthenticated Home</p>
         <ul>
           <li>Add Hero images (maybe 2 or 3)</li>

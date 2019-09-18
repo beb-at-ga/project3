@@ -9,9 +9,19 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles(theme => ({
+  button: {
+    // margin: theme.spacing(1),
+    margin: '0 auto'
+  },
+
+}));
 
 const ProfileHeaderEdit = (props) => {
+  
+  const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
 
@@ -63,7 +73,9 @@ const ProfileHeaderEdit = (props) => {
 
   return (
     <div>
-      <Button color="primary" onClick={handleClickOpen}>Edit Your Overview</Button>
+
+      <Button onClick={handleClickOpen} color='primary' className={classes.button}>Edit</Button>
+
 
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Edit Your Overview</DialogTitle>

@@ -39,6 +39,12 @@
   justify-content: center;
 }
 
+.profileHeaderEdit {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
 .color1 {
   color: #000000;
 }
