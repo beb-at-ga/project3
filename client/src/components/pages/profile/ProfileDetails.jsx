@@ -90,7 +90,7 @@ class ProfileDetails extends React.Component {
         content = <BioEdit value={this.props.user ? this.props.user.bio : ''}  updateBio={this.updateBio} />
         break;
       case 'projects':
-        content = <Projects />
+        content = <Projects user={this.props.user} />
         break;
       case 'messages':
         content = <Messages />
