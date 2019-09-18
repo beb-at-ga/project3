@@ -1,4 +1,5 @@
-import React from 'react';
+// Needed for program
+import React, { useState } from 'react';
 import axios from 'axios';
 import Bio from './Bio';
 import Projects from './Projects';
@@ -7,113 +8,90 @@ import Messages from './Messages';
 import BioEdit from './BioEdit';
 import BASE_URL from '../../../constants';
 
-class ProfileDetails extends React.Component {
-  state = {
-    currentTab: 'bio'
-  }
+// Needed for material-ui
+import PropTypes from 'prop-types';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
-  changeContentToBio = (e) => {
-    // update the state to render the correct component
-    this.setState({
-      currentTab: 'bio'
-    })
-  }
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
 
-  changeContentToReviews = (e) => {
-    // update the state to render the correct component
-    this.setState({
-      currentTab: 'reviews'
-    })
-  }
-
-  changeContentToMessages = (e) => {
-    // update the state to render the correct component
-    this.setState({
-      currentTab: 'messages'
-    })
-  }
-
-  changeContentToProjects = (e) => {
-    // update the state to render the correct component
-    this.setState({
-      currentTab: 'projects'
-    })
-  }
-
-  changeContentToEditBio = (e) => {
-    // Take me to the BioEdit component
-    this.setState({
-      currentTab: 'editBio'
-    })
-  }
-
-  editBio = (e) => {
-    // Take me to the BioEdit component
-    this.setState({
-      currentTab: 'editBio'
-    })
-  }
-
-  updateBio = (text) => {
-    let body = {
-      bio: text
-    }
-    // Save the new bio into the users db credentials
-    axios.put(`${BASE_URL}/profiles/${this.props.user._id}`, body, {
-      headers: { 'Authorization': `Bearer ${localStorage.getItem('authToken')}` }
-    })
-      .then(response => {
-        console.log(response);
-        // saving the new token so that the user's edits will be rendered
-        localStorage.setItem('authToken', response.data.token);
-        this.props.updateUser();
-
-        // Go back to the Bio component that just shows the text
-        this.setState({
-          currentTab: 'bio'
-        })
-        console.log("All done master!")
-      })
-  }
-
-  render() {
-    let content;
-
-    switch (this.state.currentTab) {
-      case 'bio':
-        content = <Bio userBio={this.props.user ? this.props.user.bio : ''} editBio={this.editBio} />
-        break;
-      case 'reviews':
-        content = <Reviews />
-        break;
-      case 'editBio':
-        content = <BioEdit value={this.props.user ? this.props.user.bio : ''} updateBio={this.updateBio} />
-        break;
-      case 'projects':
-        content = <Projects user={this.props.user} />
-        break;
-      case 'messages':
-        content = <Messages />
-        break;
-      default:
-        content = <div>You should not get here - check spelling</div>
-    }
-
-    return (
-      <div className="profileDetails">
-        <span>
-          <li onClick={this.changeContentToBio}>Bio</li>
-          <li onClick={this.changeContentToProjects}>Projects</li>
-          <li onClick={this.changeContentToReviews}>Reviews</li>
-          <li onClick={this.changeContentToMessages}>Messages</li>
-        </span>
-        <div>
-          {content}
-        </div>
-      </div>
-    )
-  }
+  return (
+    <Typography
+      component="div"
+      role="tabpanel"
+      hidden={value !== index}
+      id={`scrollable-auto-tabpanel-${index}`}
+      aria-labelledby={`scrollable-auto-tab-${index}`}
+      {...other}
+    >
+      <Box p={3}>{children}</Box>
+    </Typography>
+  );
 }
 
-export default ProfileDetails
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired,
+};
 
+function a11yProps(index) {
+  return {
+    id: `scrollable-auto-tab-${index}`,
+    'aria-controls': `scrollable-auto-tabpanel-${index}`,
+  };
+}
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+    width: '50%',
+  },
+}));
+
+export default function ScrollableTabsButtonAuto() {
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+
+  function handleChange(event, newValue) {
+    setValue(newValue);
+  }
+
+  return (
+    <div className={classes.root}>
+      <AppBar position="static" color="default">
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          indicatorColor="primary"
+          textColor="primary"
+          variant="scrollable"
+          aria-label="scrollable auto tabs example"
+        >
+          <Tab label="Bio" {...a11yProps(0)} />
+          <Tab label="Projects" {...a11yProps(1)} />
+          <Tab label="Reviews" {...a11yProps(2)} />
+          <Tab label="Messages" {...a11yProps(3)} />
+        </Tabs>
+      </AppBar>
+      <TabPanel value={value} index={0} >
+      <Bio />
+      </TabPanel>
+      <TabPanel value={value} index={1} >
+        <Projects />
+      </TabPanel>
+      <TabPanel value={value} index={2} >
+        <Reviews />
+      </TabPanel>
+      <TabPanel value={value} index={3} >
+        <Messages />
+      </TabPanel>
+    </div>
+  );
+}
