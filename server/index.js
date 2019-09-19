@@ -28,6 +28,19 @@ app.use(
     ]
   }),
   require("./controllers/auth")
+); 
+
+app.use(
+    "/messages",
+    expressJwt({
+        secret: process.env.JWT_SECRET
+    }).unless({
+        path: [
+            { url: "/auth/login", methods: ["POST"] },
+            { url: "/auth/signup", methods: ["POST"] }
+        ]
+    }),
+    require("./controllers/messages")
 );
 
 
