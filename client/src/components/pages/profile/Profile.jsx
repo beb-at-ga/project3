@@ -13,31 +13,27 @@ import Card from '@material-ui/core/Card';
 
 const Profile = (props) => {
 
-    // this !props.user isn't currently working. The <Profile /> is still being rendered.
-    if (!props.user) {
-        return <Redirect to='/' />
-    }
+  // this !props.user isn't currently working. The <Profile /> is still being rendered.
+  if (!props.user) {
+    return <Redirect to='/' />
+  }
 
-    return (
-        <Box>
-            <Grid container spacing={5}>
-                <Grid item xs={6}>
-                    <ProfileHeader user={props.user} updateUser={props.updateUser} />
-                    <Tags user={props.user} />
-                    {/* <ProfileDetails user={props.user}/> */}
-                </Grid>
-                <Grid item xs={6}>
-                    <Card>
-                        <TagSearch user={props.user}/>
-                    </Card>
-                </Grid>
-                    <ProfileDetails user={props.user} updateUser={props.updateUser} />
-                <Grid>
+  return (
+    <Box>
+      <Grid container spacing={5}>
+        <Grid item xs={8}>
+          <ProfileHeader user={props.user} updateUser={props.updateUser} />
+          <Tags user={props.user} />
+        </Grid>
+        <Grid item xs={4}>
+          <TagSearch user={props.user} />
+        </Grid>
 
-                </Grid>
-            </Grid>
-        </Box>
-    )
+        <ProfileDetails user={props.user} updateUser={props.updateUser} />
+
+      </Grid>
+    </Box>
+  )
 }
 
 export default Profile;

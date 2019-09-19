@@ -45,7 +45,7 @@ export default function ImageAvatars(props) {
           <h2>{props.user.firstname}</h2>
         </Grid>
         <Grid container justify="center" alignItems="center">
-          <p>Start your search here</p>
+          <p>Learn something new today!</p>
         </Grid>
         <Grid container justify="center" alignItems="center">
           <TagSearch user={props.user} />

@@ -39,6 +39,13 @@
   justify-content: center;
 }
 
+.tagSearch {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  justify-content: center;
+}
+
 .profileHeaderEdit {
   display: flex;
   flex-direction: row;

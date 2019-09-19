@@ -26,7 +26,9 @@ const ProfileHeader = (props) => {
           {profilePic}
         </Grid>
         <Grid item xs>
-          <a href={`mailto:${props.user.email}`}>Email: {props.user.email}</a>
+          <p>
+            Email: <a href={`mailto:${props.user.email}`}>{props.user.email}</a>
+          </p>
         </Grid>
         {/* <Grid item xs={6}>
                     <a href='htts://www.google.com'>Google</a>
