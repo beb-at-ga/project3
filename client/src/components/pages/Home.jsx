@@ -43,24 +43,24 @@ export default function ImageAvatars(props) {
       </div>
     )
   } else {
-      return (
-        <div className="home">
-          <Grid container justify="center" alignItems="center">
-            <h1>Welcome Back...</h1>
-          </Grid>
-          <Grid container justify="center" alignItems="center">
-            <Avatar alt="Remy Sharp" src={props.user.profilePic} className={classes.bigAvatar} />
-          </Grid>
-          <Grid container justify="center" alignItems="center">
-            <h2>{props.user.firstname}</h2>
-          </Grid>
-          <Grid container justify="center" alignItems="center">
-            <p>Start your search here</p>
-          </Grid>
-          <Grid container justify="center" alignItems="center">
-            <TagSearch />
-          </Grid>
-        </div>
-     )
+    return (
+      <div className="home">
+        <Grid container justify="center" alignItems="center">
+          <h1>Welcome Back...</h1>
+        </Grid>
+        <Grid container justify="center" alignItems="center">
+          <Avatar alt="Remy Sharp" src={props.user.profilePic} className={classes.bigAvatar} />
+        </Grid>
+        <Grid container justify="center" alignItems="center">
+          <h2>{props.user.firstname}</h2>
+        </Grid>
+        <Grid container justify="center" alignItems="center">
+          <p>Start your search here</p>
+        </Grid>
+        <Grid container justify="center" alignItems="center">
+          <TagSearch user={props.user} />
+        </Grid>
+      </div>
+    )
   }
 }
