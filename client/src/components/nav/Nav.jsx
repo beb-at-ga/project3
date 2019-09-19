@@ -25,6 +25,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import DeleteUser from '../pages/DeleteUser';
 
 const drawerWidth = 240;
 
@@ -118,6 +119,7 @@ const Nav = (props) => {
         <Divider />
         <List component="nav" aria-label="TODO">
             <ListItemLink to="/deleteUser" primary="Delete User" icon={<DeleteIcon />} clickAction={handleDrawerToggle} />
+            <DeleteUser user={props.user}/>
         </List>
       </div>
     );
