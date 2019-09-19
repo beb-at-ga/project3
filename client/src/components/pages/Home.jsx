@@ -1,5 +1,6 @@
 import React from 'react';
 import TagSearch from './TagSearch'
+import UnauthenticatedHome from './UnauthenticatedHome'
 import "../../App.css";
 
 // Material-Ui
@@ -28,18 +29,7 @@ export default function ImageAvatars(props) {
   if (!props.user._id) {
     return (
       <div className="home">
-        <Grid container justify="center" alignItems="center">
-          <h1>Welcome To Peer2Here</h1>
-        </Grid>
-        <Grid container justify="center" alignItems="center">
-          <h1>What?</h1>
-        </Grid>
-        <Grid container justify="center" alignItems="center">
-          <h1>Getting Started:</h1>
-        </Grid>
-        <Grid container justify="center" alignItems="center">
-          <h1>SIGN UP NOW!</h1>
-        </Grid>
+        <UnauthenticatedHome />
       </div>
     )
   } else {
