@@ -1,5 +1,5 @@
 // Needed for program
-import React, { useState } from 'react';
+import React from 'react';
 import Bio from './Bio';
 import Projects from './Projects';
 import Reviews from './Reviews';
@@ -7,7 +7,7 @@ import Messages from './Messages';
 
 // Needed for material-ui
 import PropTypes from 'prop-types';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';

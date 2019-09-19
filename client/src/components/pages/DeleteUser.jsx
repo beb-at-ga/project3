@@ -1,6 +1,6 @@
 import axios from 'axios';
 import BASE_URL from '../../constants';
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';

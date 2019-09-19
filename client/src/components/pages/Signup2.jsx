@@ -61,9 +61,10 @@ const Signup = (props) => {
       })
   }
 
-  const handleClose = () => {
-    setOpen(false);
-  }
+  // const handleClose = () => {
+  //   setOpen(false);
+  // }
+  
   const handleCancel = () => {
     setOpen(false);
     setRedirectHome(true);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import BASE_URL from '../../constants';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom'
