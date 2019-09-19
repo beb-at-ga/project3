@@ -68,3 +68,34 @@
   background-image: url("backgroundimage.jpg");
   background-size: cover;
 }
+
+.unauth-home {
+  font-family: fantasy;
+}
+
+.welcomeHeader {
+  font-size: 48px;
+  font-family: fantasy;
+}
+
+.homeInfo {
+  padding-left: 130px;
+}
+
+.infoHeading {
+  font-size: 30px;
+}
+
+.info {
+  padding-left: 35px;
+  padding-right: 400px;
+  font-family: serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.sign-up-home-button {
+  font-size: 60px;
+}
+
+
