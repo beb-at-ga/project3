@@ -63,3 +63,8 @@
 .color6 {
   color: #231f20;
 }
+
+.home {
+  background-image: url("backgroundimage.jpg");
+  background-size: cover;
+}
