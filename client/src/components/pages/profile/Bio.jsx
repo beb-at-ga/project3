@@ -3,6 +3,18 @@ import axios from 'axios';
 import BioEdit from './BioEdit';
 import BASE_URL from '../../../constants';
 
+// Material-UI Components
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+    button: {
+        // margin: theme.spacing(1),
+        margin: '0 auto'
+    },
+
+}));
+
 class Bio extends React.Component {
 	state = {
 		currentTab: 'bio'
@@ -38,16 +50,19 @@ class Bio extends React.Component {
 	}
 
 	render () {
+		let header;
 		let content;
 		let button;
 
 		switch (this.state.currentTab) {
 			case 'bio':
 			  content = this.props.user.bio
-			  button = <button onClick={this.editBio}>Edit</button>
+			  header = <h2>Bio</h2>
+			  button = <Button onClick={this.editBio} color="primary">Edit</Button>
 			  break;
 			case 'editBio':
 			  content = <BioEdit value={this.props.user ? this.props.user.bio : ''} updateBio={this.updateBio} />
+			  header = <h2>Edit Bio</h2>
 			  break;
 			default:
 			  content = <div>You should not get here - check spelling</div>
@@ -55,10 +70,11 @@ class Bio extends React.Component {
 
 		return (
 			<div>
-				<h2>Bio</h2>
+				{header}
 				<div>
 					{content}
 				</div>
+				<br />
 				{button}
 			</div>
 		)

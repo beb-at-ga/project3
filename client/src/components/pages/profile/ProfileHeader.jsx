@@ -26,13 +26,12 @@ const ProfileHeader = (props) => {
                     {profilePic}
                 </Grid>
                 <Grid item xs>
-                    <p>{props.user.email}</p>
+                    <p>Email: {props.user.email}</p>
                 </Grid>
                 <Grid item xs={6}>
                     <a href='htts://www.google.com'>Google</a>
                 </Grid>
             </Grid>
-
         </Box>
     )
 }
