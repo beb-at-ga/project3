@@ -8,3 +8,4 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/peer2here', {
 
 module.exports.User = require('./user');
 module.exports.Tag = require('./tag');
+module.exports.Message = require('./message');

@@ -99,7 +99,7 @@ const Signup = (props) => {
                 />
 
                 <TextField required id='email' label='EMail'
-                  placeholder='EMail Address'
+                  placeholder='Email Address'
                   className={classes.textField}
                   margin='normal'
                   name='email'
