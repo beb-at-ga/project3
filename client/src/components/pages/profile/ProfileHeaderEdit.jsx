@@ -10,6 +10,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { makeStyles } from '@material-ui/core/styles';
+import CreateIcon from '@material-ui/icons/Create'
 
 const useStyles = makeStyles(theme => ({
     button: {
@@ -74,7 +75,7 @@ const ProfileHeaderEdit = (props) => {
     return (
         <div>
 
-            <Button onClick={handleClickOpen} color='primary' className={classes.button}>Edit</Button>
+            <Button onClick={handleClickOpen} color='primary' className={classes.button}><CreateIcon /></Button>
 
 
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
