@@ -18,13 +18,17 @@ const DeleteUser = (props) => {
         setOpen(true);
     }
 
+    function handleCancel() {
+        setOpen(false)
+        setRedirect(false)
+    }
+
     function handleClose() {
         setOpen(false)
         setRedirect(true)
 
     }
 
-    console.log('ID to be deleted: ', props.user._id)
     const handleDelete = () => {
         let token = localStorage.getItem('authToken')
         console.log(token)
@@ -47,8 +51,6 @@ const DeleteUser = (props) => {
     }
 
     if (redirect === true) {
-        console.log('this is the newest log')
-        console.log('redirect: ', redirect)
         return (
             <Redirect to='/' />
         )
@@ -71,7 +73,7 @@ const DeleteUser = (props) => {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={handleClose} color="primary">
+                        <Button onClick={handleCancel} color="primary">
                             No, I've Changed My Mind
                         </Button>
                         <Button onClick={handleDelete} color="primary" autoFocus>
