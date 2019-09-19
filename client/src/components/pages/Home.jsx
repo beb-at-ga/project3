@@ -27,15 +27,19 @@ export default function ImageAvatars(props) {
 
   if (!props.user._id) {
     return (
-      <div>
-        <img src={process.env.PUBLIC_URL + '/public/mentorimage.png'} />;
-        <p>Unauthenticated Home</p>
-        <ul>
-          <li>Add Hero images (maybe 2 or 3)</li>
-          <li>Add some content about what it is.</li>
-          <li>Add some content about how to get started.</li>
-          <li>Maybe put a Signup button on in the call to action.</li>
-        </ul>
+      <div className="home">
+        <Grid container justify="center" alignItems="center">
+          <h1>Welcome To Peer2Here</h1>
+        </Grid>
+        <Grid container justify="center" alignItems="center">
+          <h1>What?</h1>
+        </Grid>
+        <Grid container justify="center" alignItems="center">
+          <h1>Getting Started:</h1>
+        </Grid>
+        <Grid container justify="center" alignItems="center">
+          <h1>SIGN UP NOW!</h1>
+        </Grid>
       </div>
     )
   } else {
