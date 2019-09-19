@@ -32,10 +32,10 @@ const ContactModal = (props) => {
     return (
         <div>
             <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-               {props.sender.firstname} {props.sender.lastname}
+               {props.recip.firstname} {props.recip.lastname}
       </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Contact {props.sender.firstname}!</DialogTitle>
+                <DialogTitle id="form-dialog-title">Contact {props.recip.firstname}!</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         Start a dialog by entering some details below; be sure to specify your needs and availability.
