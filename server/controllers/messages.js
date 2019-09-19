@@ -17,6 +17,11 @@ router.get('/', (req, res) => {
 })
 
 
-//POST /message
-
+//POST /messages
+router.post('/', (req, res) => {
+    db.Message.create(req.body)
+    .then(message => {
+        res.status(201).send(message)
+    })
+})
 
