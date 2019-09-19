@@ -3,10 +3,11 @@ import axios from 'axios'
 import BASE_URL from '../../constants';
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField';
+import ContactModal from './ContactModal';
 
 
 
-class  TagSearch extends React.Component {
+class TagSearch extends React.Component {
 
     state = {
         tagsInput: '',
@@ -59,7 +60,7 @@ class  TagSearch extends React.Component {
             return (
                 <ul key={i}>
                     <li>
-                        <a href="/profiles/{m._id}">{m.firstname} {m.lastname}</a> -- {m.mentorTag.join(', ')}
+                        <ContactModal recip={m} sender={this.props.user}/> -- {m.mentorTag.join(', ')}
                     </li>
                 </ul>
             )
@@ -69,7 +70,7 @@ class  TagSearch extends React.Component {
             return (
                 <ul key={i}>
                     <li>
-                        <a href="/profiles/{m._id}">{m.firstname} {m.lastname}</a> -- {m.menteeTag.join(', ')}
+                        <ContactModal recip={m} sender={this.props.user} /> -- {m.menteeTag.join(', ')}
                     </li>
                 </ul>
             )

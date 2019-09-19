@@ -28,7 +28,7 @@ const Profile = (props) => {
                 </Grid>
                 <Grid item xs={6}>
                     <Card>
-                        <TagSearch />
+                        <TagSearch user={props.user}/>
                     </Card>
                 </Grid>
                     <ProfileDetails user={props.user} updateUser={props.updateUser} />
