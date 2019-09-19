@@ -118,7 +118,7 @@ const Nav = (props) => {
         </List>
         <Divider />
         <List component="nav" aria-label="TODO">
-            <ListItemLink to="/deleteUser" primary="Delete User" icon={<DeleteIcon />} clickAction={handleDrawerToggle} />
+            <DeleteIcon />
             <DeleteUser user={props.user}/>
         </List>
       </div>
