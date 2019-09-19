@@ -52,6 +52,7 @@ class TagSearch extends React.Component {
                     mentees.push(user)
                 }
             })
+            console.log('Mentors:', mentors, 'Mentees: ', mentees)
             this.setState({ mentors: mentors, mentees: mentees })
         })
     }
