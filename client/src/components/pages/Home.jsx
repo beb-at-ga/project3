@@ -16,14 +16,14 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ImageAvatars(props) {
+const ImageAvatars =  (props) => {
   const classes = useStyles();
 
   let profilePic = '';
   if (props.user.profilePic) {
-    profilePic = <img src={props.user.profilePic} alt='profile'></img>
+    profilePic = props.user.profilePic;
   } else {
-    profilePic = <img src='http://placegoat.com/100/100' alt='profile'></img>
+    profilePic = 'http://placegoat.com/150/150';
   }
 
   if (!props.user._id) {
@@ -39,7 +39,7 @@ export default function ImageAvatars(props) {
           <h1>Welcome Back...</h1>
         </Grid>
         <Grid container justify="center" alignItems="center">
-          <Avatar alt="Remy Sharp" src={profilePic} className={classes.bigAvatar} />
+          <Avatar src={profilePic} className={classes.bigAvatar} />
         </Grid>
         <Grid container justify="center" alignItems="center">
           <h2>{props.user.firstname}</h2>
@@ -54,3 +54,5 @@ export default function ImageAvatars(props) {
     )
   }
 }
+
+export default ImageAvatars;

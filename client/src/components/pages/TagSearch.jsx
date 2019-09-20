@@ -26,7 +26,7 @@ class TagSearch extends React.Component {
   searchList = (e) => {
     e.preventDefault()
     let token = localStorage.getItem('authToken')
-    let trimmedStrings = this.state.tagsInput.split(',').map(str => str.trim())
+    let trimmedStrings = e.target.search.value.split(',').map(str => str.trim())
 
     axios.post(`${BASE_URL}/profiles/search`, {
       tags: trimmedStrings
@@ -85,7 +85,7 @@ class TagSearch extends React.Component {
       return (
         <ul key={i}>
           <li>
-            <ContactModal recip={m} sender={this.props.user} /> -- {m.mentorTag.join(', ')}
+            <ContactModal recip={m} sender={this.props.user} /> {m.mentorTag.join(', ')}
           </li>
         </ul>
       )
@@ -95,13 +95,14 @@ class TagSearch extends React.Component {
       return (
         <ul key={i}>
           <li>
-            <ContactModal recip={m} sender={this.props.user} /> -- {m.menteeTag.join(', ')}
+            <ContactModal recip={m} sender={this.props.user} /> {m.menteeTag.join(', ')}
           </li>
         </ul>
       )
     }))
 
-    if (this.mentors || this.mentees) {
+    if (this.state.mentees.length > 0 || this.state.mentors.length > 0) {
+
       console.log(`this.mentors: ${this.mentors} and this.mentees: ${this.mentees}`)
       return (
         <div>
@@ -119,15 +120,24 @@ class TagSearch extends React.Component {
                   margin="dense" id="tag-search" label="Tag Search"
                   type="text" name='search' value={this.state.tagsInput} onChange={this.handleChange}
                 />
+
                 <IconButton type="submit" color="primary" className={classes.iconButton} aria-label="search">
                   <SearchIcon />
                 </IconButton>
               </form>
             </Paper>
           </Grid>
+          <Grid>
+            <h3>Looking for a mentor?</h3>
+            <h4>{mentorsList}</h4>
+            <h3>Looking for a mentee?</h3>
+            <h4>{menteesList}</h4>
+          </Grid>
         </div>
       )
     } else {
+      console.log(`this.mentors: ${this.mentors} and this.mentees: ${this.mentees}`)
+
       return (
         <div>
           <Grid container justify="center" alignItems="center">
@@ -150,12 +160,7 @@ class TagSearch extends React.Component {
               </form>
             </Paper>
           </Grid>
-          <Grid>
-            <h3>Here is a List of Mentors: </h3>
-            <h4>{mentorsList}</h4>
-            <h3>Here is a List of Other Mentees: </h3>
-            <h4>{menteesList}</h4>
-          </Grid>
+
         </div>
       )
     }
