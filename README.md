@@ -30,13 +30,3 @@ https://trello.com/b/VqYG8ZgR/project-3
 # Descriptions of any Unsolved Problems or Major Hurdles 
 
 
-
-
-
-
-# Other
-- MongoDB, Express, React, NodeJS
-- Monster Zero Ultra (Bryan)
-
-
-
