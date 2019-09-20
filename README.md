@@ -10,6 +10,24 @@ Found yourself wishing you knew how to do something but didn't know where to sta
 ![Account Delete](Delete.png)
 
 # Technologies Used
+- bcryptjs
+- cors:
+- dotenv
+- express
+- express-jwt
+- jsonwebtoken
+- mongoose
+- morgan
+- rowdy-logger
+- material-ui
+- axios
+- lodash.template
+- mixin-deep
+- react
+- react-dom
+- react-router-dom
+- react-scripts
+- set-value
 
 
 # Our Approach
