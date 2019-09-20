@@ -1,4 +1,6 @@
 import React from 'react';
+
+// Imports for Material-UI
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -21,17 +23,24 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export default function AlignItemsList() {
+export default function AlignItemsList(props) {
   const classes = useStyles();
+
+  let profilePic = '';
+  if (props.user.profilePic) {
+    profilePic = props.user.profilePic;
+  } else {
+    profilePic = 'http://placegoat.com/150/150';
+  }
 
   return (
     <List className={classes.root}>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          <Avatar alt="user's photo" src={profilePic} />
         </ListItemAvatar>
         <ListItemText
-          primary="Brunch this weekend?"
+          primary="Mentoring in Node.js!"
           secondary={
             <React.Fragment>
               <Typography
@@ -40,9 +49,9 @@ export default function AlignItemsList() {
                 className={classes.inline}
                 color="textPrimary"
               >
-                Ali Connors
+                to Ali Connors
               </Typography>
-              {" — I'll be in your neighborhood doing errands this…"}
+              {" I would love to help mentor you in Node.js!"}
             </React.Fragment>
           }
         />
@@ -50,10 +59,10 @@ export default function AlignItemsList() {
       <Divider variant="inset" component="li" />
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
+          <Avatar alt="user's photo" src={profilePic} />
         </ListItemAvatar>
         <ListItemText
-          primary="Summer BBQ"
+          primary="Mentoring in Express"
           secondary={
             <React.Fragment>
               <Typography
@@ -62,9 +71,9 @@ export default function AlignItemsList() {
                 className={classes.inline}
                 color="textPrimary"
               >
-                to Scott, Alex, Jennifer
+                to Martin Sanchez
               </Typography>
-              {" — Wish I could come, but I'm out of town this…"}
+              {" Express is one of my strong suits. I've worked with it..."}
             </React.Fragment>
           }
         />
@@ -72,10 +81,10 @@ export default function AlignItemsList() {
       <Divider variant="inset" component="li" />
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+          <Avatar alt="user's photo" src={profilePic} />
         </ListItemAvatar>
         <ListItemText
-          primary="Oui Oui"
+          primary="Material-UI"
           secondary={
             <React.Fragment>
               <Typography
@@ -84,9 +93,9 @@ export default function AlignItemsList() {
                 className={classes.inline}
                 color="textPrimary"
               >
-                Sandra Adams
+                to Sandra Adams
               </Typography>
-              {' — Do you have Paris recommendations? Have you ever…'}
+              {' I know it looks intimidating at first, but with a little...'}
             </React.Fragment>
           }
         />
