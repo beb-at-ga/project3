@@ -4,9 +4,6 @@ import BASE_URL from '../../constants';
 
 import ContactModal from './ContactModal';
 
-
-import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
@@ -104,37 +101,64 @@ class TagSearch extends React.Component {
       )
     }))
 
-    return (
-      <div>
-        <Grid container justify="center" alignItems="center">
-          <Paper className={classes.root}>
-            <form onSubmit={this.searchList}>
-              <IconButton className={classes.iconButton} aria-label="menu">
-                <MenuIcon />
-              </IconButton>
+    if (this.mentors || this.mentees) {
+      console.log(`this.mentors: ${this.mentors} and this.mentees: ${this.mentees}`)
+      return (
+        <div>
+          <Grid container justify="center" alignItems="center">
+            <Paper className={classes.root}>
+              <form onSubmit={this.searchList}>
+                <IconButton className={classes.iconButton} aria-label="menu">
+                  <MenuIcon />
+                </IconButton>
 
-              <InputBase
-                className={classes.input}
-                placeholder="Search for skills"
-                inputProps={{ 'aria-label': 'find mentor mentee' }}
-                margin="dense" id="tag-search" label="Tag Search"
-                type="text" name='search' value={this.state.tagsInput} onChange={this.handleChange}
-              />
-              <IconButton type="submit" color="primary" className={classes.iconButton} aria-label="search">
-                <SearchIcon />
-              </IconButton>
-            </form>
-          </Paper>
-        </Grid>
+                <InputBase
+                  className={classes.input}
+                  placeholder="Search for skills"
+                  inputProps={{ 'aria-label': 'find mentor mentee' }}
+                  margin="dense" id="tag-search" label="Tag Search"
+                  type="text" name='search' value={this.state.tagsInput} onChange={this.handleChange}
+                />
+                <IconButton type="submit" color="primary" className={classes.iconButton} aria-label="search">
+                  <SearchIcon />
+                </IconButton>
+              </form>
+            </Paper>
+          </Grid>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <Grid container justify="center" alignItems="center">
+            <Paper className={classes.root}>
+              <form onSubmit={this.searchList}>
+                <IconButton className={classes.iconButton} aria-label="menu">
+                  <MenuIcon />
+                </IconButton>
 
-        <Grid>
-          <h3>Here is a List of Mentors: </h3>
-          <h4>{mentorsList}</h4>
-          <h3>Here is a List of Other Mentees: </h3>
-          <h4>{menteesList}</h4>
-        </Grid>
-      </div>
-    )
+                <InputBase
+                  className={classes.input}
+                  placeholder="Search for skills"
+                  inputProps={{ 'aria-label': 'find mentor mentee' }}
+                  margin="dense" id="tag-search" label="Tag Search"
+                  type="text" name='search' value={this.state.tagsInput} onChange={this.handleChange}
+                />
+                <IconButton type="submit" color="primary" className={classes.iconButton} aria-label="search">
+                  <SearchIcon />
+                </IconButton>
+              </form>
+            </Paper>
+          </Grid>
+          <Grid>
+            <h3>Here is a List of Mentors: </h3>
+            <h4>{mentorsList}</h4>
+            <h3>Here is a List of Other Mentees: </h3>
+            <h4>{menteesList}</h4>
+          </Grid>
+        </div>
+      )
+    }
   }
 }
 

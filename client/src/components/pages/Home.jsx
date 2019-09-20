@@ -39,7 +39,7 @@ export default function ImageAvatars(props) {
           <h1>Welcome Back...</h1>
         </Grid>
         <Grid container justify="center" alignItems="center">
-          <Avatar alt="Remy Sharp" src={props.user.profilePic} className={classes.bigAvatar} />
+          <Avatar alt="Remy Sharp" src={profilePic} className={classes.bigAvatar} />
         </Grid>
         <Grid container justify="center" alignItems="center">
           <h2>{props.user.firstname}</h2>
