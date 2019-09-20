@@ -45,20 +45,6 @@ router.post("/search", (req, res) => {
   });
 });
 
-// POST /profiles/search
-// router.post("/search", (req, res) => {
-//   db.User.find({
-//     $or: [
-//       { mentorTag: { $all: req.body.tags } },
-//       { menteeTag: { $all: req.body.tags } }
-//     ]
-//   }).then(foundUsers => {
-//     console.log(foundUsers);
-//     res.send({ foundUsers });
-//   });
-// });
-
-// PUT /profiles/:id
 router.put("/:id", (req, res) => {
   db.User.findOneAndUpdate(
     {

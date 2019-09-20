@@ -81,9 +81,6 @@ const PrivacyPolicy = () => {
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
         <AppBar className={classes.appBar}>
           <Toolbar>
-            {/* <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
-              <CloseIcon />
-            </IconButton> */}
             <Typography variant="h6" className={classes.title}>
               Privacy Policy
             </Typography>

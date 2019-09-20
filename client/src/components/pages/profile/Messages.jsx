@@ -8,19 +8,6 @@ class Messages extends React.Component {
         msgHistory: false,
 
     }
-
-    // newMessageCheck = () => {
-    //     if (msgHistory) {
-            
-    //     }
-    //     else {
-
-    //     }
-    // }
-
-    // componentDidMount() {
-    //     newMessageCheck()
-    // }
     
     render() {
         return (
