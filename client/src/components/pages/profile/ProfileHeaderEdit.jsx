@@ -14,7 +14,6 @@ import CreateIcon from '@material-ui/icons/Create'
 
 const useStyles = makeStyles(theme => ({
     button: {
-        // margin: theme.spacing(1),
         margin: '0 auto'
     },
 
