@@ -37,13 +37,7 @@ router.post("/search", (req, res) => {
   console.log(regex);
 
   db.User.find({
-    $or: [
-      { 
-        mentorTag: 
-        { 
-          $in: regex 
-        }  
-      },
+    $or: [ { mentorTag: { $in: regex } },
       { 
         menteeTag: 
         { 
