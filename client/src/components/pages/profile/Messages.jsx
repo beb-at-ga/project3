@@ -28,10 +28,10 @@ class Messages extends React.Component {
                 <h2>Messages</h2>
                 <Grid container direction="row" justify="center" alignItems="stretch">
                     <Grid >
-                        <AllConversations />
+                        <AllConversations user={this.props.user}/>
                     </Grid>
                     <Grid >
-                        <CurrentConversation />
+                        <CurrentConversation user={this.props.user}/>
                     </Grid>
                 </Grid>
                 
