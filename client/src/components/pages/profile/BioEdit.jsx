@@ -3,6 +3,7 @@ import React from 'react'
 // Material-UI Components
 import Button from '@material-ui/core/Button';
 
+
 class BioEdit extends React.Component {
 	state ={
 		text: this.props.value
