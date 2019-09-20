@@ -45,9 +45,6 @@ const ImageAvatars =  (props) => {
           <h2>{props.user.firstname}</h2>
         </Grid>
         <Grid container justify="center" alignItems="center">
-          <p>Learn something new today!</p>
-        </Grid>
-        <Grid container justify="center" alignItems="center">
           <TagSearch user={props.user} />
         </Grid>
       </div>

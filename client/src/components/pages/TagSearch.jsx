@@ -225,7 +225,7 @@ class TagSearch extends React.Component {
             </Paper>
           </Grid>
           <DialogContent>
-            <DialogContentText><h3>We couldn't find any mentors or others looking for this skill.</h3></DialogContentText>
+            <DialogContentText><h3>Want to teach or learn something new? Start your search today!</h3></DialogContentText>
           </DialogContent>
         </div>
       )
