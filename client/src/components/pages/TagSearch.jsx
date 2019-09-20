@@ -11,15 +11,19 @@ import MenuIcon from '@material-ui/core/Menu'
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import { makeStyles } from '@material-ui/core'
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText'
 
 class TagSearch extends React.Component {
   state = {
     tagsInput: '',
     mentors: [],
-    mentees: []
+    mentees: [],
+    searchInitiated: false
   }
 
   handleChange = (e) => {
+    this.setState({ searchInitiated: false })
     this.setState({ tagsInput: e.target.value })
   }
 
@@ -27,6 +31,10 @@ class TagSearch extends React.Component {
     e.preventDefault()
     let token = localStorage.getItem('authToken')
     let trimmedStrings = e.target.search.value.split(',').map(str => str.trim())
+
+    this.setState({
+      searchInitiated: true
+    });
 
     axios.post(`${BASE_URL}/profiles/search`, {
       tags: trimmedStrings
@@ -78,7 +86,7 @@ class TagSearch extends React.Component {
       },
       iconButton: {
         padding: 2,
-      }
+      },
     }));
 
     let mentorsList = (this.state.mentors.map((m, i) => {
@@ -101,7 +109,69 @@ class TagSearch extends React.Component {
       )
     }))
 
-    if (this.state.mentees.length > 0 || this.state.mentors.length > 0) {
+    if (this.state.mentees.length > 0 && this.state.mentors.length > 0) {
+      return (
+        <div>
+          <Grid container justify="center" alignItems="center">
+            <Paper className={classes.root} >
+              <form onSubmit={this.searchList}>
+                <IconButton className={classes.iconButton} aria-label="menu">
+                  <MenuIcon />
+                </IconButton>
+
+                <InputBase
+                  className={classes.input}
+                  placeholder="Search for skills"
+                  inputProps={{ 'aria-label': 'find mentor mentee' }}
+                  margin="dense" id="tag-search" label="Tag Search"
+                  type="text" name='search' value={this.state.tagsInput} onChange={this.handleChange}
+                />
+
+                <IconButton type="submit" color="primary" className={classes.iconButton} aria-label="search">
+                  <SearchIcon />
+                </IconButton>
+              </form>
+            </Paper>
+          </Grid>
+          <DialogContent>
+            <DialogContentText>Looking for a mentor?</DialogContentText>
+            <DialogContentText>{mentorsList}</DialogContentText>
+            <DialogContentText>Looking for a mentee?</DialogContentText>
+            <DialogContentText>{menteesList}</DialogContentText>
+          </DialogContent>
+        </div>
+      )
+    } else if (this.state.mentees.length > 0 && this.state.mentors.length <= 0) {
+      return (
+        <div>
+          <Grid container justify="center" alignItems="center">
+            <Paper className={classes.root}>
+              <form onSubmit={this.searchList}>
+                <IconButton className={classes.iconButton} aria-label="menu">
+                  <MenuIcon />
+                </IconButton>
+
+                <InputBase
+                  className={classes.input}
+                  placeholder="Search for skills"
+                  inputProps={{ 'aria-label': 'find mentor mentee' }}
+                  margin="dense" id="tag-search" label="Tag Search"
+                  type="text" name='search' value={this.state.tagsInput} onChange={this.handleChange}
+                />
+                <IconButton type="submit" color="primary" className={classes.iconButton} aria-label="search">
+                  <SearchIcon />
+                </IconButton>
+              </form>
+            </Paper>
+          </Grid>
+          <DialogContent>
+            <DialogContentText>We couldn't find any mentors, but these folks are also looking for this skill.</DialogContentText>
+            <DialogContentText>{menteesList}</DialogContentText>
+
+          </DialogContent>
+        </div>
+      )
+    } else if (this.state.mentees.length <= 0 && this.state.mentors.length > 0) {
       return (
         <div>
           <Grid container justify="center" alignItems="center">
@@ -125,12 +195,38 @@ class TagSearch extends React.Component {
               </form>
             </Paper>
           </Grid>
-          <Grid>
-            <h3>Looking for a mentor?</h3>
-            <h4>{mentorsList}</h4>
-            <h3>Looking for a mentee?</h3>
-            <h4>{menteesList}</h4>
+          <DialogContent>
+            <DialogContentText>We found these mentors, but couldn't find any other mentees.</DialogContentText>
+            <DialogContentText>{mentorsList}</DialogContentText>
+          </DialogContent>
+        </div>
+      )
+    } else if (this.state.mentees.length <= 0 && this.state.mentors.length <= 0) {
+      return (
+        <div>
+          <Grid container justify="center" alignItems="center">
+            <Paper className={classes.root}>
+              <form onSubmit={this.searchList}>
+                <IconButton className={classes.iconButton} aria-label="menu">
+                  <MenuIcon />
+                </IconButton>
+
+                <InputBase
+                  className={classes.input}
+                  placeholder="Search for skills"
+                  inputProps={{ 'aria-label': 'find mentor mentee' }}
+                  margin="dense" id="tag-search" label="Tag Search"
+                  type="text" name='search' value={this.state.tagsInput} onChange={this.handleChange}
+                />
+                <IconButton type="submit" color="primary" className={classes.iconButton} aria-label="search">
+                  <SearchIcon />
+                </IconButton>
+              </form>
+            </Paper>
           </Grid>
+          <DialogContent>
+            <DialogContentText><h3>We couldn't find any mentors or others looking for this skill.</h3></DialogContentText>
+          </DialogContent>
         </div>
       )
     } else {
@@ -156,7 +252,6 @@ class TagSearch extends React.Component {
               </form>
             </Paper>
           </Grid>
-
         </div>
       )
     }
