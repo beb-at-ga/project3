@@ -89,7 +89,7 @@ export default function ScrollableTabsButtonAuto(props) {
         <Reviews />
       </TabPanel>
       <TabPanel value={value} index={3} >
-        <Messages />
+        <Messages user={props.user}/>
       </TabPanel>
     </div>
   );

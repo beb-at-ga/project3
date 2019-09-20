@@ -2,11 +2,10 @@ import React from 'react'
 import axios from 'axios';
 import BioEdit from './BioEdit';
 import BASE_URL from '../../../constants';
-import CreateIcon from '@material-ui/icons/Create'
-
 
 // Material-UI Components
 import Button from '@material-ui/core/Button';
+import CreateIcon from '@material-ui/icons/Create'
 
 class Bio extends React.Component {
 	state = {
@@ -24,12 +23,12 @@ class Bio extends React.Component {
 	let body = {
 		bio: text
 	}
+
 	// Save the new bio into the users db credentials
 	axios.put(`${BASE_URL}/profiles/${this.props.user._id}`, body, {
 		headers: { 'Authorization': `Bearer ${localStorage.getItem('authToken')}` }
 	})
-		.then(response => {
-		console.log(response);
+	.then(response => {
 		// saving the new token so that the user's edits will be rendered
 		localStorage.setItem('authToken', response.data.token);
 		this.props.updateUser();
@@ -38,8 +37,7 @@ class Bio extends React.Component {
 		this.setState({
 			currentTab: 'bio'
 		})
-		console.log("All done master!")
-		})
+	})
 	}
 
 	render () {

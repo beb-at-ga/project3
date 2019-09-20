@@ -18,18 +18,26 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const message = `Truncation should be conditionally applicable on this long line of text
- as this is a much longer line than what the container can support. `;
+const message = `I would love to help mentor you in Node.js! `;
 
-export default function AutoGridNoWrap() {
+const response = `I would love some help! When are you available? `;
+
+export default function AutoGridNoWrap(props) {
   const classes = useStyles();
+
+  let profilePic = '';
+  if (props.user.profilePic) {
+    profilePic = props.user.profilePic;
+  } else {
+    profilePic = 'http://placegoat.com/150/150';
+  }
 
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Avatar>W</Avatar>
+            <Avatar alt="user's photo" src={profilePic} />
           </Grid>
           <Grid item xs zeroMinWidth>
             <Typography>{message}</Typography>
@@ -39,40 +47,30 @@ export default function AutoGridNoWrap() {
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Avatar>W</Avatar>
+            <Avatar>A</Avatar>
           </Grid>
           <Grid item xs zeroMinWidth>
-            <Typography>{message}</Typography>
+            <Typography>{response}</Typography>
           </Grid>
         </Grid>
       </Paper>
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Avatar>W</Avatar>
+            <Avatar alt="user's photo" src={profilePic} />
           </Grid>
           <Grid item xs zeroMinWidth>
-            <Typography>{message}</Typography>
+            <Typography>I am typically available weekdays in the evenings. Would that work for you?</Typography>
           </Grid>
         </Grid>
       </Paper>
       <Paper className={classes.paper}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
-            <Avatar>W</Avatar>
+            <Avatar>A</Avatar>
           </Grid>
           <Grid item xs zeroMinWidth>
-            <Typography>{message}</Typography>
-          </Grid>
-        </Grid>
-      </Paper>
-      <Paper className={classes.paper}>
-        <Grid container wrap="nowrap" spacing={2}>
-          <Grid item>
-            <Avatar>W</Avatar>
-          </Grid>
-          <Grid item xs zeroMinWidth>
-            <Typography>{message}</Typography>
+            <Typography>Monday's and Tuesday's would work best for me.</Typography>
           </Grid>
         </Grid>
       </Paper>
