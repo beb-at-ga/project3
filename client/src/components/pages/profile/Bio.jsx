@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios';
 import BioEdit from './BioEdit';
 import BASE_URL from '../../../constants';
+import CreateIcon from '@material-ui/icons/Create'
+
 
 // Material-UI Components
 import Button from '@material-ui/core/Button';
@@ -58,7 +60,7 @@ class Bio extends React.Component {
 			case 'bio':
 			  content = this.props.user.bio
 			  header = <h2>Bio</h2>
-			  button = <Button onClick={this.editBio} color="primary">Edit</Button>
+			  button = <Button onClick={this.editBio} color="primary"><CreateIcon /></Button>
 			  break;
 			case 'editBio':
 			  content = <BioEdit value={this.props.user ? this.props.user.bio : ''} updateBio={this.updateBio} />
