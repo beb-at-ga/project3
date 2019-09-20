@@ -79,11 +79,18 @@ const PrivacyPolicy = () => {
         Privacy Policy
       </Button>
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
+      <AppBar className={classes.appBar}>
+          <Toolbar>
+            <Typography variant="h6" className={classes.title}>
+              Please scroll to bottom to accept. (heheheh...)
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Container>
+          {legalIpsum}
+        </Container>
         <AppBar className={classes.appBar}>
           <Toolbar>
-            {/* <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
-              <CloseIcon />
-            </IconButton> */}
             <Typography variant="h6" className={classes.title}>
               Privacy Policy
             </Typography>
@@ -92,9 +99,6 @@ const PrivacyPolicy = () => {
             </Button>
           </Toolbar>
         </AppBar>
-        <Container>
-          {legalIpsum}
-        </Container>
       </Dialog>
     </div>
   );

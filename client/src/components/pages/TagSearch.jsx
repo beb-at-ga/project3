@@ -102,8 +102,6 @@ class TagSearch extends React.Component {
     }))
 
     if (this.state.mentees.length > 0 || this.state.mentors.length > 0) {
-
-      console.log(`this.mentors: ${this.mentors} and this.mentees: ${this.mentees}`)
       return (
         <div>
           <Grid container justify="center" alignItems="center">
@@ -136,8 +134,6 @@ class TagSearch extends React.Component {
         </div>
       )
     } else {
-      console.log(`this.mentors: ${this.mentors} and this.mentees: ${this.mentees}`)
-
       return (
         <div>
           <Grid container justify="center" alignItems="center">

@@ -1,10 +1,13 @@
 import React from 'react';
+import Grid from '@material-ui/core/Grid';
 
 const AboutText = () => {
   return (
-    <h1>
-      Hello... I'm a kickass about us page.
-    </h1>
+    <Grid container justify="center" alignItems="stretch">
+      <img src='https://img.devrant.com/devrant/rant/r_1532092_6UbeA.jpg'/>
+    </Grid>
+    
+
   )
 }
 

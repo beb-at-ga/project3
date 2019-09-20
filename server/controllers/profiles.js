@@ -23,24 +23,36 @@ router.get("/:id", (req, res) => {
 
 // // POST /profiles/search
 router.post("/search", (req, res) => {
-  console.log(req.body.tags);
-  console.log(req.body.tags.length)
+  // console.log(req.body.tags);
+  // console.log(req.body.tags.length)
   // req.body.tags is an array of strings...
+
   var regex = [];
   for (var i = 0; i < req.body.tags.length; i++) {
     console.log(req.body.tags[i]);
-    regex[i] = new RegExp(req.body.tags[i]);
+    regex[i] = new RegExp(req.body.tags[i].toLowerCase(), 'i');
   }
-
+  
+// $toLower
   console.log(regex);
 
   db.User.find({
     $or: [
-      { mentorTag: { $in: regex }  },
-      { menteeTag: { $in: regex  } }
+      { 
+        mentorTag: 
+        { 
+          $in: regex 
+        }  
+      },
+      { 
+        menteeTag: 
+        { 
+          $in: regex  
+        } 
+      }
     ]
   }).then(foundUsers => {
-    console.log(foundUsers);
+    // console.log(foundUsers);
     res.send({ foundUsers });
   });
 });
